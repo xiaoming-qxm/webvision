@@ -1,0 +1,23 @@
+###
+
+# logs
+logs/*
+
+# results
+results/*
+result/*
+
+# word level json file
+data/flickr/*
+data/google/*
+
+# swap files
+*.*~
+
+#python
+*.py[cod]
+*.so
+*.egg
+*.egg-info
+dist
+build

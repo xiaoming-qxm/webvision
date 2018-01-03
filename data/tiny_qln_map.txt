@@ -1,0 +1,48 @@
+q0001 0 tench, Tinca tinca
+q0002 0 tench, Tinca tinca
+q0036 16 bulbul
+q0074 36 terrapin
+q0144 71 scorpion
+q0176 91 coucal
+q0202 108 sea anemone, anemone
+q0245 128 black stork, Ciconia nigra
+q0246 128 black stork, Ciconia nigra
+q0291 150 sea lion
+q0306 162 beagle
+q0376 213 Irish setter, red setter
+q0377 213 Irish setter, red setter
+q0392 225 malinois
+q0400 231 collie
+q0427 250 Siberian husky
+q0657 374 langur
+q0832 464 buckle
+q0842 470 candle, taper, wax light
+q0843 470 candle, taper, wax light
+q0845 472 canoe
+q0855 478 carton
+q0929 514 cowboy boot
+q0942 525 dam, dike, dyke
+q0973 544 Dutch oven
+q0996 562 fountain
+q1045 592 hard disc, hard disk, fixed disk
+q1050 595 harvester, reaper
+q1094 623 letter opener, paper knife, paperknife
+q1095 623 letter opener, paper knife, paperknife
+q1096 623 letter opener, paper knife, paperknife
+q1098 625 lifeboat
+q1107 631 lotion
+q1129 644 matchstick
+q1145 656 minivan
+q1193 695 padlock
+q1296 765 rocking chair, rocker
+q1298 767 rubber eraser, rubber, pencil eraser
+q1299 767 rubber eraser, rubber, pencil eraser
+q1319 783 screw
+q1373 828 strainer
+q1379 831 studio couch, day bed
+q1380 831 studio couch, day bed
+q1526 927 trifle
+q1551 945 bell pepper
+q1554 948 Granny Smith
+q1569 961 dough
+q1577 968 cup

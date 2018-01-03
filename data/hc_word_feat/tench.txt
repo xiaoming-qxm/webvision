@@ -1,0 +1,39 @@
+{
+    "neg": [
+        "submarines", 
+        "people", 
+        "prison", 
+        "person", 
+        "man", 
+        "woman", 
+        "musician", 
+        "site", 
+        "submarine", 
+        "men", 
+        "women"
+    ], 
+    "pos": [
+        "fishery", 
+        "fishes", 
+        "fish", 
+        "fishing", 
+        "angling", 
+        "angler", 
+        "anglers", 
+        "ichthyology", 
+        "golden", 
+        "tail", 
+        "fin", 
+        "12lbs", 
+        "1oz", 
+        "cyprinidae", 
+        "river", 
+        "rivers", 
+        "water", 
+        "lake", 
+        "lakes", 
+        "canals", 
+        "freshwater", 
+        "baits"
+    ]
+}

@@ -1,0 +1,40 @@
+0 0 tench, Tinca tinca
+1 16 bulbul
+2 36 terrapin
+3 71 scorpion
+4 91 coucal
+5 108 sea anemone, anemone
+6 128 black stork, Ciconia nigra
+7 150 sea lion
+8 162 beagle
+9 213 Irish setter, red setter
+10 225 malinois
+11 231 collie
+12 250 Siberian husky
+13 374 langur
+14 464 buckle
+15 470 candle, taper, wax light
+16 472 canoe
+17 478 carton
+18 514 cowboy boot
+19 525 dam, dike, dyke
+20 544 Dutch oven
+21 562 fountain
+22 592 hard disc, hard disk, fixed disk
+23 595 harvester, reaper
+24 623 letter opener, paper knife, paperknife
+25 625 lifeboat
+26 631 lotion
+27 644 matchstick
+28 656 minivan
+29 695 padlock
+30 765 rocking chair, rocker
+31 767 rubber eraser, rubber, pencil eraser
+32 783 screw
+33 828 strainer
+34 831 studio couch, day bed
+35 927 trifle
+36 945 bell pepper
+37 948 Granny Smith
+38 961 dough
+39 968 cup
