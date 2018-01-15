@@ -1,0 +1,8 @@
+{
+    "neg": [
+        "band", 
+        "song", 
+        "album"
+    ], 
+    "pos": []
+}

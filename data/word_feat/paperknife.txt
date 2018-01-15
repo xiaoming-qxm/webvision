@@ -1,0 +1,10 @@
+{
+    "neg": [], 
+    "pos": [
+        "tool", 
+        "cutting", 
+        "pages", 
+        "book", 
+        "books"
+    ]
+}

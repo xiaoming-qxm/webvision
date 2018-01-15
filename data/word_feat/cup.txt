@@ -1,0 +1,16 @@
+{
+    "neg": [
+        "bra", 
+        "breast", 
+        "breasts", 
+        "single", 
+        "song", 
+        "game", 
+        "equipment", 
+        "series", 
+        "film", 
+        "book", 
+        "payment"
+    ], 
+    "pos": []
+}

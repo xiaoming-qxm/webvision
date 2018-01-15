@@ -1,0 +1,30 @@
+{
+    "neg": [
+        "casting", 
+        "defect", 
+        "surname", 
+        "comic", 
+        "dessert", 
+        "food", 
+        "episode", 
+        "sport", 
+        "sports", 
+        "veteran", 
+        "automobile", 
+        "blimp", 
+        "inc", 
+        "accessory", 
+        "footwear"
+    ], 
+    "pos": [
+        "loose", 
+        "fasten", 
+        "fastening", 
+        "belt", 
+        "device", 
+        "chape", 
+        "frame", 
+        "bar", 
+        "prong"
+    ]
+}

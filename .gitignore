@@ -10,6 +10,8 @@ result/*
 # word level json file
 data/flickr/*
 data/google/*
+data/clean/*
+data/noisy/*
 
 # swap files
 *.*~

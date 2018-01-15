@@ -12,7 +12,13 @@
         "men", 
         "women", 
         "officer", 
-        "actor"
+        "actor", 
+        "ablum", 
+        "film", 
+        "song", 
+        "singer", 
+        "ep", 
+        "commune"
     ], 
     "pos": [
         "fishery", 
@@ -26,8 +32,8 @@
         "golden", 
         "tail", 
         "fin", 
-        "12lbs", 
-        "1oz", 
+        "lbs", 
+        "oz", 
         "cyprinidae", 
         "river", 
         "rivers", 
@@ -40,6 +46,9 @@
         "carp", 
         "habitats", 
         "habitat", 
-        "species"
+        "species", 
+        "tails", 
+        "fins", 
+        "waters"
     ]
 }

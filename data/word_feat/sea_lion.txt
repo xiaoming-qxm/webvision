@@ -1,0 +1,40 @@
+{
+    "neg": [
+        "ablum", 
+        "studio", 
+        "invasion", 
+        "operation", 
+        "submarine", 
+        "submarines", 
+        "base", 
+        "helicopter", 
+        "antarctica", 
+        "supermarine", 
+        "locomotive", 
+        "park"
+    ], 
+    "pos": [
+        "aquatic", 
+        "mammal", 
+        "mammals", 
+        "foreflipper", 
+        "ear", 
+        "eared", 
+        "fur", 
+        "seals", 
+        "otariidae", 
+        "foreflippers", 
+        "belly", 
+        "water", 
+        "waters", 
+        "ocean", 
+        "animal", 
+        "animals", 
+        "marine", 
+        "zoo", 
+        "species", 
+        "specie", 
+        "feeding", 
+        "feed"
+    ]
+}

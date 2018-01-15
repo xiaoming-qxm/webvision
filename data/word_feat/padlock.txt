@@ -1,0 +1,16 @@
+{
+    "neg": [
+        "comic", 
+        "opera", 
+        "issac", 
+        "bickerstaffe", 
+        "gwen", 
+        "guthrie", 
+        "album", 
+        "via", 
+        "processor", 
+        "cpu", 
+        "cpus"
+    ], 
+    "pos": []
+}

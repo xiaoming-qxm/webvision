@@ -1,0 +1,37 @@
+{
+    "neg": [
+        "village", 
+        "river", 
+        "mountain", 
+        "nickname", 
+        "surname", 
+        "artist", 
+        "naval", 
+        "squirrel", 
+        "cannabis"
+    ], 
+    "pos": [
+        "dog", 
+        "dogs", 
+        "breed", 
+        "breeds", 
+        "herding", 
+        "sports", 
+        "fur", 
+        "pet", 
+        "pets", 
+        "sport", 
+        "showing", 
+        "shepherd", 
+        "blanco", 
+        "reveille", 
+        "shep", 
+        "border", 
+        "bearded", 
+        "farm", 
+        "puppy", 
+        "puppies", 
+        "animal", 
+        "animals"
+    ]
+}

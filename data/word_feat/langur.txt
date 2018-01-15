@@ -1,0 +1,16 @@
+{
+    "neg": [
+        "bala"
+    ], 
+    "pos": [
+        "monkey", 
+        "colobus", 
+        "colobine", 
+        "primates", 
+        "primate", 
+        "tail", 
+        "tails", 
+        "leaves", 
+        "fruits"
+    ]
+}

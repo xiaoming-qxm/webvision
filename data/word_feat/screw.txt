@@ -1,0 +1,13 @@
+{
+    "neg": [
+        "band", 
+        "game", 
+        "magazine", 
+        "ablum", 
+        "motion", 
+        "propeller", 
+        "music", 
+        "song"
+    ], 
+    "pos": []
+}

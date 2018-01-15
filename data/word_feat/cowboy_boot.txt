@@ -1,0 +1,11 @@
+{
+    "neg": [], 
+    "pos": [
+        "riding", 
+        "worn", 
+        "cuban", 
+        "toe", 
+        "shaft", 
+        "leatuer"
+    ]
+}

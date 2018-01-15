@@ -1,0 +1,26 @@
+{
+    "neg": [], 
+    "pos": [
+        "bird", 
+        "birds", 
+        "cuckoo", 
+        "centropodinae", 
+        "centropus", 
+        "claw", 
+        "toe", 
+        "hallux", 
+        "feather", 
+        "feathers", 
+        "nests", 
+        "nest", 
+        "fly", 
+        "toed", 
+        "neck", 
+        "necked", 
+        "extinct", 
+        "feet", 
+        "nestling", 
+        "nestlings", 
+        "pheasant"
+    ]
+}

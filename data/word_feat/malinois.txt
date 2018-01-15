@@ -1,0 +1,23 @@
+{
+    "neg": [], 
+    "pos": [
+        "dog", 
+        "dogs", 
+        "breed", 
+        "breeds", 
+        "detection", 
+        "explosives", 
+        "accelerants", 
+        "narcotics", 
+        "belgian", 
+        "police", 
+        "search", 
+        "rescue", 
+        "sheepdog", 
+        "working", 
+        "puppy", 
+        "puppies", 
+        "animal", 
+        "animals"
+    ]
+}

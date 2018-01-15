@@ -1,0 +1,36 @@
+{
+    "neg": [
+        "film", 
+        "television", 
+        "episode", 
+        "sketch", 
+        "album", 
+        "albums", 
+        "song", 
+        "songs", 
+        "software", 
+        "foundation", 
+        "distributor", 
+        "distribution", 
+        "music"
+    ], 
+    "pos": [
+        "boat", 
+        "boats", 
+        "emergency", 
+        "evacuation", 
+        "disaster", 
+        "shop", 
+        "inflatable", 
+        "inflation", 
+        "ships", 
+        "inflating", 
+        "life", 
+        "rafts", 
+        "raft", 
+        "liferafts", 
+        "deck", 
+        "sink", 
+        "sinking"
+    ]
+}

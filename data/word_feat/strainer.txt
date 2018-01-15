@@ -1,0 +1,13 @@
+{
+    "neg": [
+        "composer", 
+        "organist", 
+        "professor", 
+        "athlete", 
+        "rower", 
+        "music", 
+        "coefficient", 
+        "band"
+    ], 
+    "pos": []
+}

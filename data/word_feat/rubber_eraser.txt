@@ -1,0 +1,28 @@
+{
+    "neg": [
+        "film", 
+        "album", 
+        "song", 
+        "latex", 
+        "natural", 
+        "tree", 
+        "novel", 
+        "band", 
+        "bridge", 
+        "baseball", 
+        "cricket", 
+        "game"
+    ], 
+    "pos": [
+        "stationery", 
+        "writing", 
+        "paper", 
+        "pencils", 
+        "mistakes", 
+        "gum", 
+        "marks", 
+        "pen", 
+        "chalk", 
+        "brushes"
+    ]
+}

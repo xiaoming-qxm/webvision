@@ -1,0 +1,18 @@
+{
+    "neg": [
+        "bandsia", 
+        "girl", 
+        "fictional", 
+        "graph", 
+        "geometric", 
+        "movie", 
+        "film", 
+        "model", 
+        "models", 
+        "rock", 
+        "music", 
+        "tv", 
+        "brand"
+    ], 
+    "pos": []
+}

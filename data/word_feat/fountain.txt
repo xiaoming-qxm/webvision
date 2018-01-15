@@ -1,0 +1,32 @@
+{
+    "neg": [
+        "heraldry", 
+        "soda", 
+        "space", 
+        "elevator", 
+        "pen", 
+        "writing", 
+        "clarinetist", 
+        "writer", 
+        "minister", 
+        "lawyer"
+    ], 
+    "pos": [
+        "fons", 
+        "spring", 
+        "water", 
+        "basin", 
+        "jets", 
+        "drinking", 
+        "decorative", 
+        "dramatic", 
+        "springs", 
+        "aqueducts", 
+        "decoration", 
+        "decorated", 
+        "basins", 
+        "musical", 
+        "splash", 
+        "source"
+    ]
+}

@@ -1,0 +1,23 @@
+{
+    "neg": [], 
+    "pos": [
+        "dog", 
+        "dogs", 
+        "breed", 
+        "breeds", 
+        "gundog", 
+        "bred", 
+        "hunting", 
+        "hunt", 
+        "hunting", 
+        "hunter", 
+        "hunters", 
+        "gamebirds", 
+        "gamebird", 
+        "gundogs", 
+        "puppy", 
+        "puppies", 
+        "animal", 
+        "animals"
+    ]
+}

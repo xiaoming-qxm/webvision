@@ -1,0 +1,40 @@
+{
+    "neg": [
+        "town", 
+        "syria", 
+        "singer", 
+        "dancer", 
+        "player", 
+        "film", 
+        "lyricist", 
+        "composer", 
+        "director", 
+        "cricketer", 
+        "actor", 
+        "activist"
+    ], 
+    "pos": [
+        "passerine", 
+        "bird", 
+        "birds", 
+        "songbird", 
+        "songbirds", 
+        "greenbul", 
+        "greenbuls", 
+        "brownbul", 
+        "brownbuls", 
+        "leafloves", 
+        "bristlebills", 
+        "species", 
+        "forest", 
+        "habitat", 
+        "habitats", 
+        "rainforest", 
+        "tail", 
+        "tails", 
+        "wing", 
+        "wings", 
+        "neck", 
+        "necked"
+    ]
+}

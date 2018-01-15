@@ -1,0 +1,10 @@
+{
+    "neg": [
+        "episode", 
+        "series", 
+        "television", 
+        "sitcom", 
+        "broadcast"
+    ], 
+    "pos": []
+}

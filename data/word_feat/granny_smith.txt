@@ -1,0 +1,11 @@
+{
+    "neg": [
+        "gold", 
+        "tv", 
+        "television", 
+        "series", 
+        "festival", 
+        "character"
+    ], 
+    "pos": []
+}

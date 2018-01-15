@@ -1,0 +1,33 @@
+{
+    "neg": [
+        "surname", 
+        "personality", 
+        "singer", 
+        "songwriter", 
+        "guitarist", 
+        "politician", 
+        "hurler", 
+        "physician", 
+        "actress", 
+        "philosopher", 
+        "hero", 
+        "heroes"
+    ], 
+    "pos": [
+        "box", 
+        "container", 
+        "paperboard", 
+        "fiberboard", 
+        "packaging", 
+        "package", 
+        "folding", 
+        "egg", 
+        "eggs", 
+        "trays", 
+        "tray", 
+        "aseptic", 
+        "liquids", 
+        "liquid", 
+        "gable"
+    ]
+}

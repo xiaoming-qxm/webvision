@@ -1,0 +1,37 @@
+{
+    "neg": [
+        "album", 
+        "fictional", 
+        "character", 
+        "radio", 
+        "film", 
+        "novel"
+    ], 
+    "pos": [
+        "data", 
+        "storage", 
+        "device", 
+        "magnetic", 
+        "retrieve", 
+        "digital", 
+        "hdd", 
+        "stored", 
+        "retrieved", 
+        "computer", 
+        "capacity", 
+        "hdds", 
+        "usb", 
+        "sata", 
+        "cylinder", 
+        "recording", 
+        "information", 
+        "spindle", 
+        "logical", 
+        "blocks", 
+        "latency", 
+        "noise", 
+        "desktop", 
+        "laptop", 
+        "recorders"
+    ]
+}

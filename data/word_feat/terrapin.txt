@@ -1,0 +1,36 @@
+{
+    "neg": [
+        "allies", 
+        "vehicle", 
+        "song", 
+        "ship", 
+        "beer", 
+        "company", 
+        "athletic", 
+        "portable", 
+        "classroom", 
+        "album", 
+        "studio"
+    ], 
+    "pos": [
+        "turtle", 
+        "turtles", 
+        "water", 
+        "brackish", 
+        "sea", 
+        "cheloniology", 
+        "testudinology", 
+        "chelonian", 
+        "chelonians", 
+        "shell", 
+        "leatherback", 
+        "freshwater", 
+        "carapace", 
+        "river", 
+        "marsh", 
+        "emydidae", 
+        "geoemydidae", 
+        "neck", 
+        "necked"
+    ]
+}

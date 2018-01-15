@@ -1,0 +1,33 @@
+{
+    "neg": [
+        "racehorse", 
+        "thoroughbred", 
+        "pillar", 
+        "newspaper", 
+        "satirical", 
+        "pitcher", 
+        "derek"
+    ], 
+    "pos": [
+        "cooking", 
+        "pot", 
+        "walled", 
+        "lid", 
+        "iron", 
+        "casserole", 
+        "dishes", 
+        "cookware", 
+        "braadpan", 
+        "roasting", 
+        "sudderpan", 
+        "simmerpan", 
+        "simmering", 
+        "heating", 
+        "camping", 
+        "chuckwagon", 
+        "bedourie", 
+        "cookpot", 
+        "potjie", 
+        "chugunok"
+    ]
+}

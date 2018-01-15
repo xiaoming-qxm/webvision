@@ -1,0 +1,29 @@
+{
+    "neg": [
+        "film", 
+        "motion", 
+        "star", 
+        "starring", 
+        "pakistani", 
+        "army", 
+        "forces", 
+        "navy", 
+        "service"
+    ], 
+    "pos": [
+        "bird", 
+        "birds", 
+        "ciconiidae", 
+        "plumage", 
+        "legs", 
+        "leg", 
+        "beak", 
+        "species", 
+        "water", 
+        "waters", 
+        "migrate", 
+        "eggs", 
+        "egg", 
+        "nest"
+    ]
+}
