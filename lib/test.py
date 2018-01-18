@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# Author: Xiaoming　Qin
 
 """Test a convolutional neural network"""
 
@@ -7,10 +8,10 @@ import os
 import sys
 import torch
 from os.path import join as pjoin
-from factory import get_model
 from torch.autograd import Variable
 from torchvision import transforms, datasets
 from torch.utils.data import Dataset, DataLoader
+from cnn.factory import get_model
 from PIL import Image
 
 

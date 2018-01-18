@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# Author: Xiaoming　Qin
 
 """Train a convolutional neural network"""
 
@@ -12,8 +13,8 @@ from torch.autograd import Variable
 from torchvision import transforms, datasets
 from torch.utils.data import Dataset, DataLoader
 from utils import adjust_lr, save_ckpt
-from factory import get_model
-from logger import Logger
+from cnn.factory import get_model
+from cnn.logger import Logger
 
 
 def parse_args():

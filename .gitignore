@@ -12,6 +12,7 @@ data/flickr/*
 data/google/*
 data/clean/*
 data/noisy/*
+data/*.bin
 
 # swap files
 *.*~

@@ -147,6 +147,8 @@ def filter_via_neg(neg_feat, vocab, vector,
                     clean_set.append(idx)
 
             # TODO (step 2)
+        save2file(clean_set, noisy_set,
+                  save_path, cls_name, fld)
 
 
 def filter_nothing(json_names, data_path,
@@ -166,9 +168,9 @@ def filter_nothing(json_names, data_path,
                   save_path, cls_name, fld)
 
 
-def data_filter(feat_path, fname, vocab,
-                vector, data_path,
-                json_names, save_path):
+def filter(feat_path, fname, vocab,
+           vector, data_path,
+           json_names, save_path):
     # load hand-crafted word feature
     with open(pjoin(feat_path, fname), 'rb') as f:
         feats = json.load(f)
@@ -206,21 +208,22 @@ def main(feat_path, model_path, data_path, save_path):
                      'labels_queries_map.txt')
     with open(map_file, 'rb') as f:
         lines = f.readlines()
+
     for line in lines:
-        lbl_name, queries = line.strip().split(" ")
+        _, lbl_name, queries = line.strip().split(" ")
         queries = queries.split(",")
         lq_map[lbl_name] = queries
 
     for name in os.listdir(feat_path):
-        data_filter(feat_path, name, vocab, vector,
-                    data_path, lq_map[name[:-4]],
-                    save_path)
+        filter(feat_path, name, vocab, vector,
+               data_path, lq_map[name[:-4]],
+               save_path)
 
 
 if __name__ == "__main__":
-    feat_path = "/home/simon/webvision/data/word_feat"
-    model_path = "/home/simon/data/GoogleNews-vectors-negative300.bin"
-    data_path = "/home/simon/webvision/data"
-    save_path = "/home/simon/webvision/data"
+    feat_path = "../../data/word_feat"
+    model_path = "../../data/GoogleNews-vectors-negative300.bin"
+    data_path = "../../data"
+    save_path = "../../data"
 
     main(feat_path, model_path, data_path, save_path)

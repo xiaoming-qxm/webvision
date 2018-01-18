@@ -1,40 +1,40 @@
-tench q0001,q0002
-bulbul q0036
-terrapin q0074
-scorpion q0144
-coucal q0176
-sea_anemone q0202
-black_stork q0245
-sea_lion q0291
-beagle q0306
-irish_setter q0376,q0377
-malinois q0392
-collie q0400
-siberian_husky q0427
-langur q0657
-buckle q0832
-candle q0842,q0843
-canoe q0845
-carton q0855
-cowboy_boot q0929
-dam q0942
-dutch_oven q0973
-fountain q0996
-hard_disk q1045
-harvester q1050
-paperknife q1094,q1095,q1096
-lifeboat q1098
-lotion q1107
-matchstick q1129
-minivan q1145
-padlock q1193
-rocking_chair q1296
-rubber_eraser q1298,q1299
-screw q1319
-strainer q1373
-studio_couch q1379,q1380
-trifle q1526
-bell_pepper q1551
-granny_smith q1554
-dough q1569
-cup q1577
+0 tench q0001,q0002
+1 bulbul q0036
+2 terrapin q0074
+3 scorpion q0144
+4 coucal q0176
+5 sea_anemone q0202
+6 black_stork q0245
+7 sea_lion q0291
+8 beagle q0306
+9 irish_setter q0376,q0377
+10 malinois q0392
+11 collie q0400
+12 siberian_husky q0427
+13 langur q0657
+14 buckle q0832
+15 candle q0842,q0843
+16 canoe q0845
+17 carton q0855
+18 cowboy_boot q0929
+19 dam q0942
+20 dutch_oven q0973
+21 fountain q0996
+22 hard_disk q1045
+23 harvester q1050
+24 paperknife q1094,q1095,q1096
+25 lifeboat q1098
+26 lotion q1107
+27 matchstick q1129
+28 minivan q1145
+29 padlock q1193
+30 rocking_chair q1296
+31 rubber_eraser q1298,q1299
+32 screw q1319
+33 strainer q1373
+34 studio_couch q1379,q1380
+35 trifle q1526
+36 bell_pepper q1551
+37 granny_smith q1554
+38 dough q1569
+39 cup q1577
