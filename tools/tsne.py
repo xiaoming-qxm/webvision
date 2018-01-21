@@ -183,6 +183,7 @@ def tsne_webvision(feature_file):
     print("Total image number: {}".format(X.shape[0]))
     # print(labels.shape)
     Y = tsne(X, 2, 50, 20.0)
+    # Y = pca(X, 2).real
     # Plot.scatter(Y[:, 0], Y[:, 1], 30, labels)
     # Plot.scatter(Y[:, 0], Y[:, 1], 20)
     # Plot.show()
@@ -190,8 +191,8 @@ def tsne_webvision(feature_file):
     return Y
 
 if __name__ == "__main__":
-    img_name_file = "/home/simon/webvision/data/img_feat/0/img_name.lst"
-    feature_file = "/home/simon/webvision/data/img_feat/0/0.pkl"
+    img_name_file = "/home/simon/webvision/data/img_feat/2/img_name.lst"
+    feature_file = "/home/simon/webvision/data/img_feat/2/0.pkl"
 
     with open(img_name_file, 'rb') as f:
         image_list = f.readlines()

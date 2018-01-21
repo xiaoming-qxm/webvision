@@ -12,7 +12,10 @@ from torch.autograd import Variable
 from torchvision import transforms, datasets
 from torch.utils.data import Dataset, DataLoader
 from cnn.factory import get_model
+from cnn.config import cfg
+from datasets.folder import GenImageFolder
 from PIL import Image
+import pprint
 
 
 def parse_args():
@@ -21,12 +24,12 @@ def parse_args():
     parser.add_argument('--data-path', help='path to data root',
                         default='/data/wv-40', type=str)
     parser.add_argument('--gpus', help='GPU id to use',
-                        default='[0]', type=str)
+                        default='0', type=str)
     parser.add_argument('--batch-size', help='mini-batch size',
                         default=16, type=int)
     parser.add_argument('--num-workers', help='number of workers',
                         default=4, type=int)
-    parser.add_argument('--params-file', help='model to train on',
+    parser.add_argument('--params-file', help='trained model',
                         default='model_best.tar', type=str)
     parser.add_argument('--input-size', help='size of model input',
                         default=299, type=int)
@@ -75,22 +78,21 @@ def test_model(data_root, gpus, batch_size=16,
                num_workers=4, num_classes=40,
                in_size=224):
 
-    normalize = transforms.Normalize(mean=[0.502, 0.476, 0.428],
-                                     std=[0.299, 0.296, 0.309])
+    normalize = transforms.Normalize(mean=cfg.PIXEL_MEANS,
+                                     std=cfg.PIXEL_STDS)
 
     test_transform = transforms.Compose([
         transforms.Resize((in_size, in_size)),
         transforms.ToTensor(),
         normalize])
 
-    test_data = datasets.ImageFolder(root=pjoin(data_root, 'test'),
-                                     transform=test_transform)
+    test_data = GenImageFolder(root=pjoin(data_root, 'test'),
+                               transform=test_transform)
     test_loader = DataLoader(dataset=test_data, batch_size=batch_size,
                              shuffle=False, num_workers=num_workers,
                              pin_memory=True)
 
     assert os.path.isfile(params_file), "{} is not exist.".format(params_file)
-
     params = torch.load(params_file)
 
     # define the model
@@ -98,6 +100,8 @@ def test_model(data_root, gpus, batch_size=16,
     if len(gpus) > 1:
         gpus = [int(i) for i in gpus.strip('[]').split(',')]
         model = torch.nn.DataParallel(model, device_ids=gpus)
+    else:
+        os.environ["CUDA_VISIBLE_DEVICES"] = gpus
     model.cuda()
     model.load_state_dict(params['state_dict'])
 

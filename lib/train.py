@@ -12,8 +12,10 @@ from os.path import join as pjoin
 from torch.autograd import Variable
 from torchvision import transforms, datasets
 from torch.utils.data import Dataset, DataLoader
-from utils import adjust_lr, save_ckpt
+from datasets.folder import GenImageFolder
+from cnn.utils import adjust_lr, save_ckpt
 from cnn.factory import get_model
+from cnn.config import cfg
 from cnn.logger import Logger
 
 
@@ -23,7 +25,7 @@ def parse_args():
     parser.add_argument('--data-path', help='path to data root',
                         default='/data/wv-40', type=str)
     parser.add_argument('--gpus', help='GPU id to use',
-                        default='[0]', type=str)
+                        default='0', type=str)
     parser.add_argument('--epochs', help='number of epochs',
                         type=int)
     parser.add_argument('--batch-size', help='mini-batch size',
@@ -140,8 +142,8 @@ def train_model(data_root, gpus, epochs,
                 num_classes=40,
                 print_freq=100):
 
-    normalize = transforms.Normalize(mean=[0.502, 0.476, 0.428],
-                                     std=[0.299, 0.296, 0.309])
+    normalize = transforms.Normalize(mean=cfg.PIXEL_MEANS,
+                                     std=cfg.PIXEL_STDS)
 
     # Image transformer
     train_transform = transforms.Compose([
@@ -157,13 +159,13 @@ def train_model(data_root, gpus, epochs,
         transforms.ToTensor(),
         normalize])
 
-    train_data = datasets.ImageFolder(root=pjoin(data_root, 'train'),
-                                      transform=train_transform)
+    train_data = GenImageFolder(root=pjoin(data_root, 'train'),
+                                transform=train_transform)
     train_loader = DataLoader(dataset=train_data, batch_size=batch_size,
                               shuffle=True, num_workers=num_workers,
                               pin_memory=True)
-    valid_data = datasets.ImageFolder(root=pjoin(data_root, 'valid'),
-                                      transform=valid_transform)
+    valid_data = GenImageFolder(root=pjoin(data_root, 'valid'),
+                                transform=valid_transform)
     valid_loader = DataLoader(dataset=valid_data, batch_size=4,
                               shuffle=False, num_workers=num_workers,
                               pin_memory=True)
@@ -173,6 +175,8 @@ def train_model(data_root, gpus, epochs,
     if len(gpus) > 1:
         gpus = [int(i) for i in gpus.strip('[]').split(',')]
         model = torch.nn.DataParallel(model, device_ids=gpus)
+    else:
+        os.environ["CUDA_VISIBLE_DEVICES"] = gpus
     model.cuda()
 
     # define optimizer and loss function

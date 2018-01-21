@@ -15,7 +15,7 @@ from torchvision import transforms
 from torch.utils.data import Dataset, DataLoader
 from cnn.factory import get_model
 from cnn.config import cfg
-from datasets.folder import ImageFolder
+from datasets.folder import SpecImageFolder
 from PIL import Image
 import numpy as np
 
@@ -26,7 +26,7 @@ def parse_args():
     parser.add_argument('--data-path', help='path to data root',
                         default='/data/wv-40/train', type=str)
     parser.add_argument('--gpus', help='GPU id to use',
-                        default='[0]', type=str)
+                        default='0', type=str)
     parser.add_argument('--batch-size', help='mini-batch size',
                         default=16, type=int)
     parser.add_argument('--num-workers', help='number of workers',
@@ -128,8 +128,8 @@ def extract_model(data_root, gpus, batch_size=16,
 
     for cls_id in sorted(os.listdir(data_root)):
         print("Processing class {}".format(cls_id))
-        ext_data = ImageFolder(root=pjoin(data_root, cls_id),
-                               transform=ext_transform)
+        ext_data = SpecImageFolder(root=pjoin(data_root, cls_id),
+                                   transform=ext_transform)
         ext_loader = DataLoader(dataset=ext_data, batch_size=batch_size,
                                 shuffle=False, num_workers=num_workers,
                                 pin_memory=True)

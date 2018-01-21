@@ -9,7 +9,7 @@ from os.path import join
 
 
 def save_ckpt(state, arch, epoch, is_best=False):
-    fname = join('../results', arch, 'ckpt_{}.tar'.format(epoch))
+    fname = join('../results', arch, 'ckpt.tar')
 
     torch.save(state, fname)
     if is_best:
