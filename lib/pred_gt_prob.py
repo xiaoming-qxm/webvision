@@ -45,12 +45,13 @@ def parse_args():
     return args
 
 
-def save_to_txt(img_paths, probs, save_path, cls_id):
+def save_to_txt(img_paths, probs, labels, save_path, cls_id):
     with open(pjoin(save_path, cls_id + ".lst"), 'wb') as f:
         for i in xrange(len(img_paths)):
             im_name = img_paths[i][0].split('/')[-1]
             prob = probs[i]
-            f.write("{0} {1:.5f}\n".format(im_name, prob))
+            label = labels[i]
+            f.write("{0} {1:.5f} {2:d}\n".format(im_name, prob, label))
 
 
 def pred_gt_probs(pred_loader, model, rescale, save_path, cls_id):
@@ -58,6 +59,7 @@ def pred_gt_probs(pred_loader, model, rescale, save_path, cls_id):
     model.eval()
 
     p_arr = []
+    l_arr = []
     num_samples = 0.
     num_correct = 0.
     img_paths = pred_loader.dataset.imgs
@@ -72,9 +74,12 @@ def pred_gt_probs(pred_loader, model, rescale, save_path, cls_id):
         probs = rescale(output)
         gt_prob = probs[:, gt_label].cpu().data.numpy()
         p_arr.append(gt_prob)
+        _, preds = torch.max(output, 1)
+        pd_lbl = preds == labels
+        pd_lbl = pd_lbl.cpu().data.numpy()
+        l_arr.append(pd_lbl)
 
         # # For debug
-        # _, preds = torch.max(output, 1)
         # correct = (preds == labels).sum()
         # num_samples += labels.size(0)
         # num_correct += correct.data[0]
@@ -85,7 +90,8 @@ def pred_gt_probs(pred_loader, model, rescale, save_path, cls_id):
     # print("acc: {0:.4f}".format(num_correct / float(num_samples)))
 
     p_arr = np.concatenate(p_arr, axis=0)
-    save_to_txt(img_paths, p_arr, save_path, cls_id)
+    l_arr = np.concatenate(l_arr, axis=0)
+    save_to_txt(img_paths, p_arr, l_arr, save_path, cls_id)
 
     return num_correct, num_samples
 
