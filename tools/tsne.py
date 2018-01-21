@@ -19,7 +19,9 @@ from embed_img_plot import *
 
 
 def Hbeta(D=Math.array([]), beta=1.0):
-    """Compute the perplexity and the P-row for a specific value of the precision of a Gaussian distribution."""
+    """ Compute the perplexity and the P-row for a specific 
+        value of the precision of a Gaussian distribution.
+    """
 
     # Compute P-row and corresponding perplexity
     P = Math.exp(-D.copy() * beta)
@@ -30,7 +32,9 @@ def Hbeta(D=Math.array([]), beta=1.0):
 
 
 def x2p(X=Math.array([]), tol=1e-5, perplexity=30.0):
-    """Performs a binary search to get P-values in such a way that each conditional Gaussian has the same perplexity."""
+    """Performs a binary search to get P-values in such a way
+       that each conditional Gaussian has the same perplexity.
+    """
 
     # Initialize some variables
     print "Computing pairwise distances..."
@@ -87,7 +91,9 @@ def x2p(X=Math.array([]), tol=1e-5, perplexity=30.0):
 
 
 def pca(X=Math.array([]), no_dims=50):
-    """Runs PCA on the NxD array X in order to reduce its dimensionality to no_dims dimensions."""
+    """Runs PCA on the NxD array X in order to 
+       reduce its dimensionality to no_dims dimensions.
+    """
 
     print "Preprocessing the data using PCA..."
     (n, d) = X.shape
@@ -99,8 +105,11 @@ def pca(X=Math.array([]), no_dims=50):
 
 
 def tsne(X=Math.array([]), no_dims=2, initial_dims=50, perplexity=30.0):
-    """Runs t-SNE on the dataset in the NxD array X to reduce its dimensionality to no_dims dimensions.
-    The syntaxis of the function is Y = tsne.tsne(X, no_dims, perplexity), where X is an NxD NumPy array."""
+    """Runs t-SNE on the dataset in the NxD array X to reduce its 
+       dimensionality to no_dims dimensions.
+       The syntaxis of the function is Y = tsne.tsne(X, no_dims, perplexity),
+       where X is an NxD NumPy array.
+    """
 
     # Check inputs
     if isinstance(no_dims, float):
@@ -145,7 +154,8 @@ def tsne(X=Math.array([]), no_dims=2, initial_dims=50, perplexity=30.0):
         PQ = P - Q
         for i in range(n):
             dY[i, :] = Math.sum(
-                Math.tile(PQ[:, i] * num[:, i], (no_dims, 1)).T * (Y[i, :] - Y), 0)
+                Math.tile(PQ[:, i] * num[:, i],
+                          (no_dims, 1)).T * (Y[i, :] - Y), 0)
 
         # Perform the update
         if iter < 20:
