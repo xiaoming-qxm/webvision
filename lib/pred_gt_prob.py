@@ -23,7 +23,7 @@ def parse_args():
 
     parser = argparse.ArgumentParser(description='Test a deep neural network')
     parser.add_argument('--data-path', help='path to data root',
-                        default='/data/wv-40', type=str)
+                        default='/data/wv-40/train', type=str)
     parser.add_argument('--gpus', help='GPU id to use',
                         default='0', type=str)
     parser.add_argument('--batch-size', help='mini-batch size',
@@ -45,16 +45,22 @@ def parse_args():
     return args
 
 
+def save_to_txt(img_paths, probs, save_path, cls_id):
+    with open(pjoin(save_path, cls_id + ".lst"), 'wb') as f:
+        for i in xrange(len(img_paths)):
+            im_name = img_paths[i][0].split('/')[-1]
+            prob = probs[i]
+            f.write("{0} {1:.5f}\n".format(im_name, prob))
+
+
 def pred_gt_probs(pred_loader, model, rescale, save_path, cls_id):
     # switch to evaluate mode
     model.eval()
 
-    if not os.path.exists(pjoin(save_path, cls_id)):
-        os.mkdir(pjoin(save_path, cls_id))
-
     p_arr = []
     num_samples = 0.
     num_correct = 0.
+    img_paths = pred_loader.dataset.imgs
     # ground truth label
     gt_label = int(cls_id)
     for idx, data in enumerate(pred_loader, 0):
@@ -79,6 +85,7 @@ def pred_gt_probs(pred_loader, model, rescale, save_path, cls_id):
     # print("acc: {0:.4f}".format(num_correct / float(num_samples)))
 
     p_arr = np.concatenate(p_arr, axis=0)
+    save_to_txt(img_paths, p_arr, save_path, cls_id)
 
     return num_correct, num_samples
 
