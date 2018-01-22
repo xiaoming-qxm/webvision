@@ -90,7 +90,7 @@ def plot_history(fname):
              label='valid loss',
              lw=1.2)
 
-    plt.xlabel('train steps')
+    plt.xlabel('training steps')
     plt.ylabel('loss')
     plt.title(model_name + " loss")
     plt.legend(loc='upper right')
@@ -104,7 +104,7 @@ def plot_history(fname):
              label='valid acc',
              lw=1.2)
 
-    plt.xlabel('train steps')
+    plt.xlabel('training steps')
     plt.ylabel('accuracy')
     plt.title(model_name + " accuracy")
     plt.legend(loc='upper left')

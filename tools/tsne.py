@@ -201,8 +201,8 @@ def tsne_webvision(feature_file):
     return Y
 
 if __name__ == "__main__":
-    img_name_file = "/home/simon/webvision/data/img_feat/2/img_name.lst"
-    feature_file = "/home/simon/webvision/data/img_feat/2/0.pkl"
+    img_name_file = "/home/simon/webvision/data/img_feat/1/img_name.lst"
+    feature_file = "/home/simon/webvision/data/img_feat/1/0.pkl"
 
     with open(img_name_file, 'rb') as f:
         image_list = f.readlines()
