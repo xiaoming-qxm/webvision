@@ -136,7 +136,7 @@ def tsne(X=Math.array([]), no_dims=2, initial_dims=50, perplexity=30.0):
     P = x2p(X, 1e-5, perplexity)
     P = P + Math.transpose(P)
     P = P / Math.sum(P)
-    P = P * 4								   # early exaggeration
+    P = P * 4                                  # early exaggeration
     P = Math.maximum(P, 1e-12)
 
     # Run iterations
@@ -191,18 +191,18 @@ def tsne_webvision(feature_file):
         X = pickle.load(f)
 
     print("Total image number: {}".format(X.shape[0]))
-    # print(labels.shape)
     Y = tsne(X, 2, 50, 20.0)
     # Y = pca(X, 2).real
-    # Plot.scatter(Y[:, 0], Y[:, 1], 30, labels)
-    # Plot.scatter(Y[:, 0], Y[:, 1], 20)
-    # Plot.show()
 
     return Y
 
 if __name__ == "__main__":
-    img_name_file = "/home/simon/webvision/data/img_feat/1/img_name.lst"
-    feature_file = "/home/simon/webvision/data/img_feat/1/0.pkl"
+    cls_id = 0
+    img_name_file = "../data/img_feat/{}/img_name.lst".format(cls_id)
+    feature_file = "../data/img_feat/{}/0.pkl".format(cls_id)
+    label_file = "../data/pred_probs/{}.lst".format(cls_id)
+    # label_file = "../data/k-means/{}.lst".format(cls_id)
+    label_file = "../data/dens_est/{}.lst".format(cls_id)
 
     with open(img_name_file, 'rb') as f:
         image_list = f.readlines()
@@ -210,4 +210,10 @@ if __name__ == "__main__":
     image_list = [l.strip('\n') for l in image_list]
 
     loc_list = tsne_webvision(feature_file)
-    embed_image_plot(loc_list, image_list)
+    Math.save("../data/tsne_2d.npy", loc_list)
+
+    loc_list = Math.load("../data/tsne_2d.npy")
+
+    embed_image_plot(loc_list, image_list,
+                     label_file=label_file,
+                     with_border=True)

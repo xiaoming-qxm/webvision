@@ -79,15 +79,15 @@ def pred_gt_probs(pred_loader, model, rescale, save_path, cls_id):
         pd_lbl = pd_lbl.cpu().data.numpy()
         l_arr.append(pd_lbl)
 
-        # # For debug
-        # correct = (preds == labels).sum()
-        # num_samples += labels.size(0)
-        # num_correct += correct.data[0]
+        # For debug
+        correct = (preds == labels).sum()
+        num_samples += labels.size(0)
+        num_correct += correct.data[0]
 
     # print("gt label: {}".format(gt_label))
-    # print("num correct: {}".format(num_correct))
-    # print("num samples: {}".format(num_samples))
-    # print("acc: {0:.4f}".format(num_correct / float(num_samples)))
+    print("num correct: {}".format(num_correct))
+    print("num samples: {}".format(num_samples))
+    print("acc: {0:.4f}".format(num_correct / float(num_samples)))
 
     p_arr = np.concatenate(p_arr, axis=0)
     l_arr = np.concatenate(l_arr, axis=0)
