@@ -53,7 +53,6 @@ def plot_data_stats():
         im_list = [s for s in os.listdir(cls_dir) if
                    s.endswith('.jpg') or s.endswith('.png')]
         stats[int(cls_id)] = len(im_list)
-
     plt.figure(figsize=(10, 6))
     index = range(len(stats))
     plt.bar(index, stats, 0.8, color='lightblue', edgecolor="lightblue")
@@ -76,4 +75,4 @@ def plot_train_loss_acc(fname):
 if __name__ == "__main__":
     # plot_clean_nosiy_examples()
     # plot_data_stats()
-    plot_train_loss_acc("../logs/inception_v3.log")
+    plot_train_loss_acc("../logs/inception_v3_q50_baseline.log")

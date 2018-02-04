@@ -45,5 +45,16 @@
         "skating", 
         "wrestling"
     ], 
-    "pos": []
+    "pos": [
+        "wooden", 
+        "curved", 
+        "wood", 
+        "sit", 
+        "sat", 
+        "sits", 
+        "furniture", 
+        "legs", 
+        "springs", 
+        "sitter"
+    ]
 }

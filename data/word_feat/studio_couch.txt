@@ -1,4 +1,20 @@
 {
     "neg": [], 
-    "pos": []
+    "pos": [
+        "sleep", 
+        "sleeping", 
+        "sofa", 
+        "sofas", 
+        "bed", 
+        "cot", 
+        "lie", 
+        "lying", 
+        "sleeper", 
+        "lies", 
+        "lay", 
+        "sleeps", 
+        "slept", 
+        "upholstered", 
+        "furniture"
+    ]
 }

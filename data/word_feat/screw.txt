@@ -9,5 +9,36 @@
         "music", 
         "song"
     ], 
-    "pos": []
+    "pos": [
+        "fastener", 
+        "bolt", 
+        "metal", 
+        "helical", 
+        "ridge", 
+        "thread", 
+        "nail", 
+        "threads", 
+        "nut", 
+        "groove", 
+        "screwdrivers", 
+        "screwdriver", 
+        "wrenches", 
+        "wrench", 
+        "bolts", 
+        "nuts", 
+        "tighten", 
+        "tightened", 
+        "threaded", 
+        "insertion", 
+        "assemble", 
+        "assembled", 
+        "torque", 
+        "torquing", 
+        "torqued", 
+        "released", 
+        "release", 
+        "assembly", 
+        "wood", 
+        "fasteners"
+    ]
 }

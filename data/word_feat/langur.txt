@@ -11,6 +11,11 @@
         "tail", 
         "tails", 
         "leaves", 
-        "fruits"
+        "fruits", 
+        "monkeys", 
+        "slender", 
+        "tailed", 
+        "colobinae", 
+        "ape"
     ]
 }

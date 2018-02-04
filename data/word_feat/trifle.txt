@@ -1,4 +1,27 @@
 {
     "neg": [], 
-    "pos": []
+    "pos": [
+        "recipe", 
+        "recipes", 
+        "taste", 
+        "eat", 
+        "ate", 
+        "food", 
+        "dessert", 
+        "cake", 
+        "cream", 
+        "brandy", 
+        "rum", 
+        "preserve", 
+        "preserves", 
+        "fruit", 
+        "fruits", 
+        "custard", 
+        "custards", 
+        "jam", 
+        "sherry", 
+        "wine", 
+        "sponge", 
+        "jelly"
+    ]
 }

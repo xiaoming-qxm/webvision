@@ -28,6 +28,11 @@
         "aseptic", 
         "liquids", 
         "liquid", 
-        "gable"
+        "gable", 
+        "containers", 
+        "cardboard", 
+        "paper", 
+        "packed", 
+        "storage"
     ]
 }

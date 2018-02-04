@@ -6,6 +6,13 @@
         "cuban", 
         "toe", 
         "shaft", 
-        "leatuer"
+        "leatuer", 
+        "arched", 
+        "heel", 
+        "stitching", 
+        "tooling", 
+        "chunky", 
+        "slanted", 
+        "footwear"
     ]
 }

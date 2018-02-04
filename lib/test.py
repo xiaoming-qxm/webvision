@@ -13,7 +13,7 @@ from torchvision import transforms, datasets
 from torch.utils.data import Dataset, DataLoader
 from cnn.factory import get_model
 from cnn.config import cfg
-from datasets.folder import GenImageFolder
+from datasets.folder import GenImageFolder, SpecImageFolder
 from PIL import Image
 import pprint
 
@@ -33,6 +33,11 @@ def parse_args():
                         default='model_best.tar', type=str)
     parser.add_argument('--input-size', help='size of model input',
                         default=299, type=int)
+    parser.add_argument('--mode', help='test mode, `all` for test on all '
+                        'classes, `each` for on each class', default='all',
+                        type=str)
+    parser.add_argument('--test-name', help='dataset name to test on',
+                        default='test', type=str)
 
     if len(sys.argv) == 1:
         parser.print_help()
@@ -76,21 +81,15 @@ def test(test_loader, model, criterion):
 def test_model(data_root, gpus, batch_size=16,
                params_file='model_best.tar',
                num_workers=4, num_classes=40,
-               in_size=224):
+               in_size=224, mode='all',
+               test_name='test'):
 
     normalize = transforms.Normalize(mean=cfg.PIXEL_MEANS,
                                      std=cfg.PIXEL_STDS)
-
     test_transform = transforms.Compose([
         transforms.Resize((in_size, in_size)),
         transforms.ToTensor(),
         normalize])
-
-    test_data = GenImageFolder(root=pjoin(data_root, 'test'),
-                               transform=test_transform)
-    test_loader = DataLoader(dataset=test_data, batch_size=batch_size,
-                             shuffle=False, num_workers=num_workers,
-                             pin_memory=True)
 
     assert os.path.isfile(params_file), "{} is not exist.".format(params_file)
     params = torch.load(params_file)
@@ -107,7 +106,27 @@ def test_model(data_root, gpus, batch_size=16,
 
     loss_func = torch.nn.CrossEntropyLoss().cuda()
 
-    test(test_loader, model, loss_func)
+    # test mode
+    if mode == "each":
+        base_path = pjoin(data_root, test_name)
+        cls_list = os.listdir(base_path)
+        cls_list = sorted([int(c) for c in cls_list])
+        for cls_id in cls_list:
+            print("---             class id: {}             ---".format(
+                cls_id))
+            test_data = SpecImageFolder(root=pjoin(base_path, str(cls_id)),
+                                        transform=test_transform)
+            test_loader = DataLoader(dataset=test_data, batch_size=batch_size,
+                                     shuffle=False, num_workers=num_workers,
+                                     pin_memory=True)
+            test(test_loader, model, loss_func)
+    else:
+        test_data = GenImageFolder(root=pjoin(data_root, test_name),
+                                   transform=test_transform)
+        test_loader = DataLoader(dataset=test_data, batch_size=batch_size,
+                                 shuffle=False, num_workers=num_workers,
+                                 pin_memory=True)
+        test(test_loader, model, loss_func)
 
 
 def main():
@@ -118,8 +137,9 @@ def main():
                batch_size=args.batch_size,
                num_workers=args.num_workers,
                in_size=args.input_size,
-               params_file=args.params_file
-               )
+               params_file=args.params_file,
+               mode=args.mode,
+               test_name=args.test_name)
 
 
 if __name__ == "__main__":

@@ -14,5 +14,28 @@
         "tv", 
         "brand"
     ], 
-    "pos": []
+    "pos": [
+        "fire", 
+        "fires", 
+        "matches", 
+        "wooden", 
+        "sticks", 
+        "heat", 
+        "frictional", 
+        "ignite", 
+        "igniting", 
+        "burn", 
+        "ignition", 
+        "friction", 
+        "candle", 
+        "burning", 
+        "light", 
+        "lights", 
+        "lighting", 
+        "cigar", 
+        "cigars", 
+        "wood", 
+        "lighter", 
+        "cardboard"
+    ]
 }

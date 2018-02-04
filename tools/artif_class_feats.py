@@ -16,15 +16,14 @@ data_root = "../data/word_feat"
 
 tench = {"pos": ["fishery", "fishes", "fish", "fishing",
                  "angling", "angler", "anglers", "ichthyology",
-                 "golden", "tail", "fin", "lbs", "oz",
-                 "cyprinidae", "river", "rivers", "water",
-                 "lake", "lakes", "canals", "freshwater", "baits",
+                 "golden", "tail", "fin", "cyprinidae", "river",
+                 "rivers", "water", "lake", "lakes", "canals",
                  "carp", "habitats", "habitat", "species",
-                 "tails", "fins", "waters"],
+                 "freshwater", "baits", "tails", "fins", "waters"],
          "neg": ["submarines", "people", "prison", "person",
                  "man", "woman", "musician", "site", "submarine",
                  "men", "women", "officer", "actor", "ablum",
-                 "film", "song", "singer", "ep", "commune"]}
+                 "film", "song", "singer", "commune"]}
 save_feature(data_root, tench, 'tench')
 
 bulbul = {"pos": ["passerine", "bird", "birds", "songbird", "songbirds",
@@ -111,6 +110,7 @@ save_feature(data_root, irish_setter, 'irish_setter')
 malinois = {"pos": ["dog", "dogs", "breed", "breeds", "detection", "explosives",
                     "accelerants", "narcotics", "belgian", "police",
                     "search", "rescue", "sheepdog", "working", "puppy",
+                    "hunting", "hunt", "hunting", "hunter", "hunters",
                     "puppies", "animal", "animals"],
             "neg": []}
 save_feature(data_root, malinois, 'malinois')
@@ -124,18 +124,21 @@ collie = {"pos": ["dog", "dogs", "breed", "breeds", "herding", "sports", "fur",
 save_feature(data_root, collie, 'collie')
 
 siberian_husky = {"pos": ["dog", "dogs", "breed", "breeds", "working",
-                          "spitz", "hunt", "hunting", "hunter", "hunter",
+                          "spitz", "hunt", "hunting", "hunter", "hunters",
                           "puppy", "puppies", "animal", "animals"],
                   "neg": []}
 save_feature(data_root, siberian_husky, 'siberian_husky')
 
 langur = {"pos": ["monkey", "colobus", "colobine", "primates", "primate",
-                  "tail", "tails", "leaves", "fruits"],
+                  "tail", "tails", "leaves", "fruits", "monkeys",
+                  "slender", "tailed", "colobinae", "ape"],
           "neg": ["bala"]}
 save_feature(data_root, langur, 'langur')
 
 buckle = {"pos": ["loose", "fasten", "fastening", "belt", "device",
-                  "chape", "frame", "bar", "prong"],
+                  "chape", "frame", "bar", "prong", "clasp" "attach",
+                  "attached", "fastened", " ornament", "ornaments"
+                  ],
           "neg": ["casting", "defect", "surname", "comic", "dessert",
                   "food", "episode", "sport", "sports", "veteran",
                   "automobile", "blimp", "inc", "accessory", "footwear"]}
@@ -143,7 +146,7 @@ save_feature(data_root, buckle, 'buckle')
 
 candle = {"pos": ["wick", "ignitable", "flammable", "tallow", "fragrance",
                   "chandlery", "tabletop", "heat", "illumination",
-                  "lighting", "flame", "light"],
+                  "lighting", "flame", "light", "burn", "lights", "luminous"],
           "neg": ["place", "places", "lake", "novel", "music", "band",
                   "rock", "record", "albums", "song", "singer", "singers",
                   "corporation", "facility", "company", "fish", "hap",
@@ -164,14 +167,16 @@ save_feature(data_root, canoe, 'canoe')
 
 carton = {"pos": ["box", "container", "paperboard", "fiberboard", "packaging",
                   "package", "folding", "egg", "eggs", "trays", "tray",
-                  "aseptic", "liquids", "liquid", "gable"],
+                  "aseptic", "liquids", "liquid", "gable", "containers",
+                  "cardboard", "paper", "packed", "storage"],
           "neg": ["surname", "personality", "singer", "songwriter",
                   "guitarist", "politician", "hurler", "physician",
                   "actress", "philosopher", "hero", "heroes"]}
 save_feature(data_root, carton, 'carton')
 
 cowboy_boot = {"pos": ["riding", "worn", "cuban", "toe", "shaft",
-                       "leatuer"],
+                       "leatuer", "arched", "heel", "stitching",
+                       "tooling", "chunky", "slanted", "footwear"],
                "neg": []}
 save_feature(data_root, cowboy_boot, 'cowboy_boot')
 
@@ -214,7 +219,7 @@ hard_disk = {"pos": ["data", "storage", "device", "magnetic", "retrieve",
 save_feature(data_root, hard_disk, 'hard_disk')
 
 harvester = {"pos": ["mechanical", "machine", "automated", "mechanised", "wheel",
-                     "machinery", "engine", "engines", ],
+                     "machinery", "engine", "engines", "vehicle", "arm"],
              "neg": ["grim", "death", "painting", "paint", "sculpture", "miniatures",
                      "alien", "game", "ufo", "comic", "comics", "protagonist",
                      "marvel", "fiction", "fictional", "ends", "antagonists",
@@ -231,7 +236,9 @@ harvester = {"pos": ["mechanical", "machine", "automated", "mechanised", "wheel"
                      "navy", "ship", "ships", "horse", "satyr"]}
 save_feature(data_root, harvester, 'harvester')
 
-paperknife = {"pos": ["tool", "cutting", "pages", "book", "books"],
+paperknife = {"pos": ["tool", "cutting", "pages", "book", "books", "cut",
+                      "envelopes", "edge", "cutting", "instrument", "blade",
+                      "sharp", "handle"],
               "neg": []}
 save_feature(data_root, paperknife, 'paperknife')
 
@@ -244,26 +251,46 @@ lifeboat = {"pos": ["boat", "boats", "emergency", "evacuation", "disaster",
                     "distributor", "distribution", "music"]}
 save_feature(data_root, lifeboat, 'lifeboat')
 
-lotion = {"pos": [],
+lotion = {"pos": ["shampoo", "skin", "treatment", "cream", "creams",
+                  "viscosity", "hand", "body", "moisturize", "care",
+                  "emulsion", "aqueous", "oily", "gel", "fragrances",
+                  "glycerol", "lubricants", "absorption", "artistry",
+                  "gold", "bond", "olay", "aveeno", "jergens", "sebamed",
+                  "bath", "johnson", "skincare", "cetaphil", "lux", "suave",
+                  "dial", "neutrogena", "vaseline", "eucerin", "nivea",
+                  "moisturizer", "liquid", "soothing", "cleansing", "antiseptic",
+                  "washing", "bathing", "hands"],
           "neg": ["band", "song", "album"]}
 save_feature(data_root, lotion, 'lotion')
 
-matchstick = {"pos": [],
+matchstick = {"pos": ["fire", "fires", "matches", "wooden", "sticks", "heat",
+                      "frictional", "ignite", "igniting", "burn", "ignition",
+                      "friction", "candle", "burning", "light", "lights",
+                      "lighting", "cigar", "cigars", "wood", "lighter", "cardboard"],
               "neg": ["bandsia", "girl", "fictional", "graph", "geometric", "movie",
                       "film", "model", "models", "rock", "music", "tv", "brand"]}
 save_feature(data_root, matchstick, 'matchstick')
 
-minivan = {"pos": [],
+minivan = {"pos": ["carrier", "mpv", "muv", "vehicle", "layout", "roof",
+                   "hatchback", "engine", "mechanicals", "car", "wheel",
+                   "sedan", "wagon", "seating", "seat", "seats", "doors",
+                   "doors", "cars", "motors", "mpvs", "muvs", "carrying",
+                   "cargo", "passengers", "passenger"],
            "neg": []}
 save_feature(data_root, minivan, 'minivan')
 
-padlock = {"pos": [],
+padlock = {"pos": ["lock", "locks", "shackle", "chain", "hasp", "rusty",
+                   "attached", "attach", "key", "keys", "gate", "door",
+                   "doors", "safety", "locksmiths", "machined", "security",
+                   "locking", "secured", "shackles", "unlock", "secure",
+                   ],
            "neg": ["comic", "opera", "issac", "bickerstaffe",
                    "gwen", "guthrie", "album", "via",
                    "processor", "cpu", "cpus"]}
 save_feature(data_root, padlock, 'padlock')
 
-rocking_chair = {"pos": [],
+rocking_chair = {"pos": ["wooden", "curved", "wood", "sit", "sat", "sits",
+                         "furniture", "legs", "springs", "sitter"],
                  "neg": ["song", "music", "single", "album", "band", "pitcher", "musician",
                          "songwriter", "neighborhood", "painter", "illustrator",
                          "writer", "historian", "coach", "football", "drummer", "film",
@@ -281,38 +308,73 @@ rubber_eraser = {"pos": ["stationery", "writing", "paper", "pencils", "mistakes"
                          "game"]}
 save_feature(data_root, rubber_eraser, 'rubber_eraser')
 
-screw = {"pos": [],
+screw = {"pos": ["fastener", "bolt", "metal", "helical", "ridge", "thread",
+                 "nail", "threads", "nut", "groove", "screwdrivers",
+                 "screwdriver", "wrenches", "wrench", "bolts", "nuts",
+                 "tighten", "tightened", "threaded", "insertion", "assemble",
+                 "assembled", "torque", "torquing", "torqued", "released",
+                 "release", "assembly", "wood", "fasteners"],
          "neg": ["band", "game", "magazine", "ablum", "motion", "propeller",
                  "music", "song"]}
 save_feature(data_root, screw, 'screw')
 
-strainer = {"pos": [],
+strainer = {"pos": ["plumbing", "cooking", "cook", "utensil", "colander",
+                    "sieve", "metal", "filter", "sink", "water", "basket",
+                    "perforated", "perforate", "corrugated", "corrugate",
+                    "flow", "bowl", "holes", "draining", "drain",
+                    "drains", "drained", " aluminium", "stainless",
+                    "plastic", "mesh", "dry", "sifters", "sifter"],
             "neg": ["composer", "organist", "professor", "athlete",
-                                "rower", "music", "coefficient", "band"]}
+                    "rower", "music", "coefficient", "band"]}
 save_feature(data_root, strainer, 'strainer')
 
-studio_couch = {"pos": [],
+studio_couch = {"pos": ["sleep", "sleeping", "sofa", "sofas", "bed",
+                        "cot", "lie", "lying", "sleeper", "lies",
+                        "lay", "sleeps", "slept", "upholstered",
+                        "furniture"],
                 "neg": []}
 save_feature(data_root, studio_couch, 'studio_couch')
 
-trifle = {"pos": [],
+trifle = {"pos": ["recipe", "recipes", "taste", "eat", "ate", "food",
+                  "dessert", "cake", "cream", "brandy", "rum", "preserve",
+                  "preserves", "fruit", "fruits", "custard", "custards",
+                  "jam", "sherry", "wine", "sponge", "jelly"],
           "neg": []}
 save_feature(data_root, trifle, 'trifle')
 
-bell_pepper = {"pos": [],
+bell_pepper = {"pos": ["sweet", "cultivars", "cultivar", "food",
+                       "plant", "capsicum", "capsaicin", "taste",
+                       "vegetables", "vegetable", "recipe", "recipes",
+                       "vitamin", "annuum", "pungent"],
                "neg": []}
 save_feature(data_root, bell_pepper, 'bell_pepper')
 
-granny_smith = {"pos": [],
+granny_smith = {"pos": ["apple", "apples", "cultivar", "tree",
+                        "fruit", "fruits", "juicy", "fresh",
+                        "flesh", "crisp", "acidity", "green",
+                        "acidity", "mellows", "mellow", "ripening",
+                        "flavour", "vitamin", "vitamins", "antioxidant",
+                        "diets", "dishes", "tart", "eat", "ate", "eaten"],
                 "neg": ["gold", "tv", "television", "series",
                         "festival", "character"]}
 save_feature(data_root, granny_smith, 'granny_smith')
 
-dough = {"pos": [],
+dough = {"pos": ["cook", "cooking", "ingredient", "malleable", "grains",
+                 "flour", "water", "shaping", "foodstuffs", "bread",
+                 "biscuits", "cakes", "cookies", "noodles", "paste",
+                 "flatbreads", "dumplings", "pizza", "flours", "piecrusts",
+                 "wheat", "maize", "rice", "rye", "legumes", "almonds",
+                 "yeast", "yeasts", "knead", "kneading", "kneaded",
+                 "baking", "mixture", "pastry"],
          "neg": ["episode", "series", "television", "sitcom", "broadcast"]}
 save_feature(data_root, dough, 'dough')
 
-cup = {"pos": [],
+cup = {"pos": ["drink", "coffe", "milk", "water", "container",
+               "drinking", "drinks", "glass", "plastic", "wood",
+               "thirst", "teacups", "teacup", "drinkable", "tea",
+               "coffee", "mazagran", "mug", "thermos", "paper",
+               "beer", "wine", "cocktail", "liquor", "glasses",
+               "tankard", "bottom", "handle"],
        "neg": ["bra", "breast", "breasts", "single", "song", "game",
                "equipment", "series", "film", "book", "payment"]}
 save_feature(data_root, cup, 'cup')

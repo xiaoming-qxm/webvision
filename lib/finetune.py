@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Author: Xiaoming　Qin
 
-"""Train a convolutional neural network"""
+"""Finetune a convolutional neural network"""
 
 import sys
 import os
@@ -31,18 +31,19 @@ def parse_args():
     parser.add_argument('--batch-size', help='mini-batch size',
                         default=16, type=int)
     parser.add_argument('--lr', help='initial learning rate',
-                        default=0.1, type=float)
+                        default=0.001, type=float)
     parser.add_argument('--weight-decay', help='learing weight decay',
                         default=1e-4, type=float)
     parser.add_argument('--num-workers', help='number of workers',
                         default=4, type=int)
-    parser.add_argument('--arch', dest='model_name',
-                        help='model to train on',
-                        default='inception_v3', type=str)
     parser.add_argument('--input-size', help='size of model input',
                         default=299, type=int)
     parser.add_argument('--print-freq', help='print frequency',
                         default=100, type=int)
+    parser.add_argument('--params-file', help='pre-trained model',
+                        default='model_best.tar', type=str)
+    parser.add_argument('--train-name', help='dataset name to train on',
+                        default='train', type=str)
 
     if len(sys.argv) == 1:
         parser.print_help()
@@ -85,8 +86,8 @@ def validate(valid_loader, model, criterion, epoch, log):
         epoch + 1, ave_loss, ave_acc))
 
 
-def train(train_loader, model, criterion,
-          optimizer, epoch, log, print_freq):
+def finetune(train_loader, model, criterion,
+             optimizer, epoch, log, print_freq):
     # switch to train mode
     model.train()
 
@@ -133,15 +134,10 @@ def train(train_loader, model, criterion,
             running_loss = 0.
 
 
-def train_model(data_root, gpus, epochs,
-                batch_size=64, base_lr=0.1,
-                model_name='inception_v3',
-                weight_decay=0.,
-                num_workers=1,
-                in_size=224,
-                num_classes=40,
-                print_freq=100):
-
+def finetune_model(data_root, gpus, epochs, batch_size,
+                   base_lr, weight_decay, num_workers,
+                   in_size, print_freq, params_file,
+                   train_name, num_classes=40):
     normalize = transforms.Normalize(mean=cfg.PIXEL_MEANS,
                                      std=cfg.PIXEL_STDS)
 
@@ -159,7 +155,7 @@ def train_model(data_root, gpus, epochs,
         transforms.ToTensor(),
         normalize])
 
-    train_data = GenImageFolder(root=pjoin(data_root, 'train'),
+    train_data = GenImageFolder(root=pjoin(data_root, train_name),
                                 transform=train_transform)
     train_loader = DataLoader(dataset=train_data, batch_size=batch_size,
                               shuffle=True, num_workers=num_workers,
@@ -170,7 +166,11 @@ def train_model(data_root, gpus, epochs,
                               shuffle=False, num_workers=num_workers,
                               pin_memory=True)
 
+    assert os.path.isfile(params_file), "{} is not exist.".format(params_file)
+    params = torch.load(params_file)
+
     # define the model
+    model_name = params['arch']
     model = get_model(name=model_name, num_classes=num_classes)
     if len(gpus) > 1:
         gpus = [int(i) for i in gpus.strip('[]').split(',')]
@@ -178,6 +178,7 @@ def train_model(data_root, gpus, epochs,
     else:
         os.environ["CUDA_VISIBLE_DEVICES"] = gpus
     model.cuda()
+    model.load_state_dict(params['state_dict'])
 
     # define optimizer and loss function
     optimizer = torch.optim.SGD(model.parameters(), lr=base_lr,
@@ -193,15 +194,14 @@ def train_model(data_root, gpus, epochs,
     if not os.path.exists(res_save_fld):
         os.mkdir(res_save_fld)
 
-    # lr_epoch_map = {0: 0.08, 20: 0.001, 60: 0.0001}
+    lr_epoch_map = {0: 0.1, 20: 0.01, 60: 0.001}
 
     for epoch in range(epochs):
-        adjust_lr(optimizer, epoch, base_lr)
-        # adjust_lr_manual(optimizer, epoch, lr_epoch_map)
+        adjust_lr_manual(optimizer, epoch, lr_epoch_map)
 
-        # train for one epoch
-        train(train_loader, model, loss_func, optimizer,
-              epoch, logger, print_freq)
+        # finetune for one epoch
+        finetune(train_loader, model, loss_func, optimizer,
+                 epoch, logger, print_freq)
 
         # evaluate on validation set
         validate(valid_loader, model, loss_func, epoch, logger)
@@ -222,16 +222,17 @@ def train_model(data_root, gpus, epochs,
 def main():
     args = parse_args()
 
-    train_model(data_root=args.data_path,
-                gpus=args.gpus,
-                epochs=args.epochs,
-                batch_size=args.batch_size,
-                base_lr=args.lr,
-                model_name=args.model_name,
-                weight_decay=args.weight_decay,
-                num_workers=args.num_workers,
-                in_size=args.input_size,
-                print_freq=args.print_freq)
+    finetune_model(data_root=args.data_path,
+                   gpus=args.gpus,
+                   epochs=args.epochs,
+                   batch_size=args.batch_size,
+                   base_lr=args.lr,
+                   weight_decay=args.weight_decay,
+                   num_workers=args.num_workers,
+                   in_size=args.input_size,
+                   print_freq=args.print_freq,
+                   params_file=args.params_file,
+                   train_name=args.train_name)
 
 
 if __name__ == "__main__":

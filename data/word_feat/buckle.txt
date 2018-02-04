@@ -25,6 +25,11 @@
         "chape", 
         "frame", 
         "bar", 
-        "prong"
+        "prong", 
+        "claspattach", 
+        "attached", 
+        "fastened", 
+        " ornament", 
+        "ornaments"
     ]
 }

@@ -7,5 +7,32 @@
         "festival", 
         "character"
     ], 
-    "pos": []
+    "pos": [
+        "apple", 
+        "apples", 
+        "cultivar", 
+        "tree", 
+        "fruit", 
+        "fruits", 
+        "juicy", 
+        "fresh", 
+        "flesh", 
+        "crisp", 
+        "acidity", 
+        "green", 
+        "acidity", 
+        "mellows", 
+        "mellow", 
+        "ripening", 
+        "flavour", 
+        "vitamin", 
+        "vitamins", 
+        "antioxidant", 
+        "diets", 
+        "dishes", 
+        "tart", 
+        "eat", 
+        "ate", 
+        "eaten"
+    ]
 }

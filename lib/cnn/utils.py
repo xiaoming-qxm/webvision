@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# Author: Xiaoming Qin
 
 """Utility function for train(test) a neural network"""
 
@@ -23,6 +24,15 @@ def adjust_lr(optimizer, epoch, lr, dec_freq=40):
     new_lr = lr * (0.1 ** (epoch // dec_freq))
     for param_group in optimizer.param_groups:
         param_group['lr'] = new_lr
+
+
+def adjust_lr_manual(optimizer, epoch, lr_epoch_map):
+    """ Set the learning rate by the `lr` which is
+        defined by user
+    """
+    if epoch in lr_epoch_map.keys():
+        for param_group in optimizer.param_groups:
+            param_group['lr'] = lr_epoch_map[epoch]
 
 
 def accuracy(output, target, topk=(1,)):
@@ -50,12 +60,14 @@ def plot_history(fname):
     model_name = infos[0].strip('\n').split(": ")[1]
     batch_size = infos[1].strip('\n').split(": ")[1]
     epochs = infos[2].strip('\n').split(": ")[1]
+    best_epoch = infos[3].strip('\n').split(": ")[1]
+    save_name = fname.split('/')[-1].split('.')[0]
 
     train_loss = []
     train_acc = []
     train_steps = []
 
-    ln_i = 4
+    ln_i = 5
     while infos[ln_i].startswith('valid') is False:
         _, step, loss, acc = infos[ln_i].strip('\n').split(' ')
         train_loss.append(float(loss))
@@ -94,7 +106,9 @@ def plot_history(fname):
     plt.ylabel('loss')
     plt.title(model_name + " loss")
     plt.legend(loc='upper right')
-    plt.savefig('../results/' + model_name + "/loss.png")
+    plt.savefig('../results/' + model_name +
+                "/loss_{}.png".format(
+                    save_name))
 
     plt.figure(2)
     plt.plot(train_steps, train_acc, 'r-',
@@ -108,4 +122,6 @@ def plot_history(fname):
     plt.ylabel('accuracy')
     plt.title(model_name + " accuracy")
     plt.legend(loc='upper left')
-    plt.savefig('../results/' + model_name + "/acc.png")
+    plt.savefig('../results/' + model_name +
+                "/acc_{}.png".format(
+                    save_name))

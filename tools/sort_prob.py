@@ -8,7 +8,7 @@ import numpy as np
 import os
 
 
-def sort_by_prob(base_path, save_path, cls_id, quan=50):
+def sort_by_prob(base_path, save_path, cls_id, aux_thres=0.3, quan=50):
     with open(pjoin(base_path, cls_id + '.lst'), 'rb') as f:
         lines = f.readlines()
 
@@ -17,15 +17,18 @@ def sort_by_prob(base_path, save_path, cls_id, quan=50):
     origin_labels = [int(i.strip().split(' ')[2]) for i in lines]
     probs = np.asarray(probs)
     cut_off = np.percentile(probs, quan)
-    # print("num of origin true labels: {}".format(sum(origin_labels)))
-    # print("cut off: {}".format(cut_off))
-    # print("max: {}".format(np.max(probs)))
-    # print("min: {}".format(np.min(probs)))
+    print("num of origin true labels: {}".format(sum(origin_labels)))
+    print("cut off: {}".format(cut_off))
+    print("max: {}".format(np.max(probs)))
+    print("min: {}".format(np.min(probs)))
 
-    labels = probs >= cut_off
+    if cut_off > aux_thres:
+        labels = probs >= aux_thres
+    else:
+        labels = probs >= cut_off
     labels = labels.astype(np.int)
-    # print(len(labels))
-    # print(sum(labels))
+    print(len(labels))
+    print(sum(labels))
 
     true_set = []
     with open(pjoin(save_path, cls_id + '.lst'), 'wb') as f:
@@ -41,10 +44,11 @@ def sort_by_prob(base_path, save_path, cls_id, quan=50):
 def sort_main(base_path, save_path, quan=50):
     true_set = []
     for cls_file in os.listdir(base_path):
+        print("cls id: {}".format(cls_file))
         if not os.path.isfile(pjoin(base_path, cls_file)):
             continue
         cls_id = cls_file.split(".")[0]
-        res_set = sort_by_prob(base_path, save_path, cls_id, quan)
+        res_set = sort_by_prob(base_path, save_path, cls_id, quan=quan)
         true_set.extend(res_set)
     true_set = sorted(true_set)
     with open("../data/train_q{}.lst".format(quan), 'wb') as f:
@@ -54,4 +58,4 @@ def sort_main(base_path, save_path, quan=50):
 if __name__ == "__main__":
     base_path = "../data/pred_probs"
     save_path = "../data/dens_est/"
-    sort_main(base_path, save_path)
+    sort_main(base_path, save_path, quan=10)

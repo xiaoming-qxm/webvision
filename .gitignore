@@ -15,6 +15,7 @@ data/noisy/*
 data/*.bin
 data/img_feat/*
 data/pred_probs/*
+data/*.lst
 
 # swap files
 *.*~

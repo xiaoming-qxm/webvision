@@ -12,5 +12,28 @@
         "cpu", 
         "cpus"
     ], 
-    "pos": []
+    "pos": [
+        "lock", 
+        "locks", 
+        "shackle", 
+        "chain", 
+        "hasp", 
+        "rusty", 
+        "attached", 
+        "attach", 
+        "key", 
+        "keys", 
+        "gate", 
+        "door", 
+        "doors", 
+        "safety", 
+        "locksmiths", 
+        "machined", 
+        "security", 
+        "locking", 
+        "secured", 
+        "shackles", 
+        "unlock", 
+        "secure"
+    ]
 }

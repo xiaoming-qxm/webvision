@@ -52,6 +52,7 @@ class Logger():
             f.write("model_name: {}\n".format(self._model_name))
             f.write("batch_size: {}\n".format(self._batch_size))
             f.write("num_epochs: {}\n".format(self._epochs))
+            f.write("best_epoch: {}\n".format(self._best_epoch))
 
             f.write('train info: \n')
             for info in self._train_log:

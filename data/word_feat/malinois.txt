@@ -16,6 +16,11 @@
         "sheepdog", 
         "working", 
         "puppy", 
+        "hunting", 
+        "hunt", 
+        "hunting", 
+        "hunter", 
+        "hunters", 
         "puppies", 
         "animal", 
         "animals"

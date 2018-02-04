@@ -5,6 +5,14 @@
         "cutting", 
         "pages", 
         "book", 
-        "books"
+        "books", 
+        "cut", 
+        "envelopes", 
+        "edge", 
+        "cutting", 
+        "instrument", 
+        "blade", 
+        "sharp", 
+        "handle"
     ]
 }

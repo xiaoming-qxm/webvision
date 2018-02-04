@@ -9,5 +9,35 @@
         "coefficient", 
         "band"
     ], 
-    "pos": []
+    "pos": [
+        "plumbing", 
+        "cooking", 
+        "cook", 
+        "utensil", 
+        "colander", 
+        "sieve", 
+        "metal", 
+        "filter", 
+        "sink", 
+        "water", 
+        "basket", 
+        "perforated", 
+        "perforate", 
+        "corrugated", 
+        "corrugate", 
+        "flow", 
+        "bowl", 
+        "holes", 
+        "draining", 
+        "drain", 
+        "drains", 
+        "drained", 
+        " aluminium", 
+        "stainless", 
+        "plastic", 
+        "mesh", 
+        "dry", 
+        "sifters", 
+        "sifter"
+    ]
 }

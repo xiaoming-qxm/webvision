@@ -12,5 +12,34 @@
         "book", 
         "payment"
     ], 
-    "pos": []
+    "pos": [
+        "drink", 
+        "coffe", 
+        "milk", 
+        "water", 
+        "container", 
+        "drinking", 
+        "drinks", 
+        "glass", 
+        "plastic", 
+        "wood", 
+        "thirst", 
+        "teacups", 
+        "teacup", 
+        "drinkable", 
+        "tea", 
+        "coffee", 
+        "mazagran", 
+        "mug", 
+        "thermos", 
+        "paper", 
+        "beer", 
+        "wine", 
+        "cocktail", 
+        "liquor", 
+        "glasses", 
+        "tankard", 
+        "bottom", 
+        "handle"
+    ]
 }

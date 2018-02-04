@@ -84,6 +84,8 @@
         "wheel", 
         "machinery", 
         "engine", 
-        "engines"
+        "engines", 
+        "vehicle", 
+        "arm"
     ]
 }

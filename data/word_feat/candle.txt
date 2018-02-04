@@ -45,6 +45,9 @@
         "illumination", 
         "lighting", 
         "flame", 
-        "light"
+        "light", 
+        "burn", 
+        "lights", 
+        "luminous"
     ]
 }

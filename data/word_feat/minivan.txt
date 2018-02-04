@@ -1,4 +1,31 @@
 {
     "neg": [], 
-    "pos": []
+    "pos": [
+        "carrier", 
+        "mpv", 
+        "muv", 
+        "vehicle", 
+        "layout", 
+        "roof", 
+        "hatchback", 
+        "engine", 
+        "mechanicals", 
+        "car", 
+        "wheel", 
+        "sedan", 
+        "wagon", 
+        "seating", 
+        "seat", 
+        "seats", 
+        "doors", 
+        "doors", 
+        "cars", 
+        "motors", 
+        "mpvs", 
+        "muvs", 
+        "carrying", 
+        "cargo", 
+        "passengers", 
+        "passenger"
+    ]
 }

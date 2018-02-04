@@ -68,17 +68,15 @@ def save2file(clean_set, noisy_set,
               save_path, cls_name,
               suffix):
     save_file = pjoin(save_path, 'clean',
-                      cls_name + '_' +
-                      suffix + '.txt')
+                      cls_name + '.txt')
 
-    with open(save_file, 'w') as f:
+    with open(save_file, 'a') as f:
         for i in range(len(clean_set)):
             f.write(clean_set[i] + '\n')
 
     save_file = pjoin(save_path, 'noisy',
-                      cls_name + '_' +
-                      suffix + '.txt')
-    with open(save_file, 'w') as f:
+                      cls_name + '.txt')
+    with open(save_file, 'a') as f:
         for i in range(len(noisy_set)):
             f.write(noisy_set[i] + '\n')
 
@@ -122,6 +120,12 @@ def filter_via_pan(pos_feat, neg_feat,
         # write files
         save2file(clean_set, noisy_set,
                   save_path, cls_name, fld)
+
+
+def filter_via_pos(pos_feat, vocab, vector,
+                   json_names, data_path,
+                   save_path, cls_name):
+    pass
 
 
 def filter_via_neg(neg_feat, vocab, vector,

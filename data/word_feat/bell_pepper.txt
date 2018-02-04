@@ -1,4 +1,20 @@
 {
     "neg": [], 
-    "pos": []
+    "pos": [
+        "sweet", 
+        "cultivars", 
+        "cultivar", 
+        "food", 
+        "plant", 
+        "capsicum", 
+        "capsaicin", 
+        "taste", 
+        "vegetables", 
+        "vegetable", 
+        "recipe", 
+        "recipes", 
+        "vitamin", 
+        "annuum", 
+        "pungent"
+    ]
 }

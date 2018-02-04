@@ -10,7 +10,7 @@
         "hunt", 
         "hunting", 
         "hunter", 
-        "hunter", 
+        "hunters", 
         "puppy", 
         "puppies", 
         "animal", 

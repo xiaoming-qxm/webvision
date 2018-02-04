@@ -17,7 +17,6 @@
         "film", 
         "song", 
         "singer", 
-        "ep", 
         "commune"
     ], 
     "pos": [
@@ -32,8 +31,6 @@
         "golden", 
         "tail", 
         "fin", 
-        "lbs", 
-        "oz", 
         "cyprinidae", 
         "river", 
         "rivers", 
@@ -41,12 +38,12 @@
         "lake", 
         "lakes", 
         "canals", 
-        "freshwater", 
-        "baits", 
         "carp", 
         "habitats", 
         "habitat", 
         "species", 
+        "freshwater", 
+        "baits", 
         "tails", 
         "fins", 
         "waters"
