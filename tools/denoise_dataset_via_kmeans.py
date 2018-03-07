@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# Author: Xiaoming Qin
 
 from __future__ import absolute_import
 from __future__ import division
@@ -39,7 +40,7 @@ def kmeans_cluster_and_denoise_dataset(feat_file, im_name_file,
         image_list = f.readlines()
     image_list = [l.strip('\n').split('/')[-1] for l in image_list]
 
-    reduced_dims = 100
+    reduced_dims = 400
     # PCA dimension reduction
     X = pca(X, reduced_dims).real
     # k-means clustering
@@ -67,7 +68,7 @@ def kmeans_cluster_and_denoise_dataset(feat_file, im_name_file,
 
 
 def main():
-    cls_id = 3
+    cls_id = 14
     img_name_file = "../data/img_feat/{}/img_name.lst".format(cls_id)
     feature_file = "../data/img_feat/{}/0.pkl".format(cls_id)
     save_path = "../data/k-means"

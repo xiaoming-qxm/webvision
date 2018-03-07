@@ -10,7 +10,7 @@ from os.path import join as pjoin
 from similarity import *
 
 
-data_root = "/home/simon/webvision/data"
+data_root = "../../data"
 
 
 def load_word_vec(model_path):
@@ -26,7 +26,7 @@ def find_feat_in_tags(tags, feats):
     return count
 
 
-def calc_sim_tag_with_feat(tags, feat_vecs,
+def calc_sim_tag_with_feat(tags, feat_mat,
                            cand_feat_name,
                            vocab, vec):
     """ Calculate similarity between tags and features. """
@@ -35,15 +35,27 @@ def calc_sim_tag_with_feat(tags, feat_vecs,
     # for debugging
     cand_tags_name = []
 
+    # for tag in tags:
+    #     res = []
+    #     if vocab.has_key(tag):
+    #         # for debugging
+    #         cand_tags_name.append(tag)
+
+    #         tag_vec = vec[vocab[tag]].numpy()
+    #         for feat in feat_vecs:
+    #             res.append(cos_similarity(tag_vec, feat[1]))
+    #         probs.append(res)
+
     for tag in tags:
-        res = []
         if vocab.has_key(tag):
             # for debugging
             cand_tags_name.append(tag)
-
             tag_vec = vec[vocab[tag]].numpy()
-            for feat in feat_vecs:
-                res.append(cos_similarity(tag_vec, feat[1]))
+            # res = cos_sim(tag_vec, feat_mat)
+            idx, res = hybrid_sim(tag_vec, feat_mat, top_k=3, alpha=0.1)
+
+            print idx
+            print res
             probs.append(res)
 
     # print cand_tags_name
@@ -52,6 +64,9 @@ def calc_sim_tag_with_feat(tags, feat_vecs,
         return 0, "", ""
 
     probs = np.array(probs)
+
+    # print probs.shape
+
     # Max pooling along all the tags
     # probs = np.max(probs, axis=0)
 
@@ -66,7 +81,7 @@ def calc_sim_tag_with_feat(tags, feat_vecs,
 
 
 # load hand-crafted word feature
-with open(pjoin(data_root, 'hc_word_feat', 'tench.txt'), 'rb') as f:
+with open(pjoin(data_root, 'word_feat', 'tench.txt'), 'rb') as f:
     feat = json.load(f)
 
 # positive feature
@@ -77,7 +92,7 @@ neg_feat = feat['neg']
 pos_vec = []
 neg_vec = []
 
-model_path = "/home/simon/data/GoogleNews-vectors-negative300.bin"
+model_path = "../../data/GoogleNews-vectors-negative300.bin"
 vocab, vec = load_word_vec(model_path)
 
 # convert positive and negative word feature to vector
@@ -100,11 +115,19 @@ json_names = ["q0001.json", "q0002.json"]
 cand_pos_name = []
 cand_neg_name = []
 
+tmp_pv = []
+tmp_nv = []
+
 for item in pos_vec:
     cand_pos_name.append(item[0])
+    tmp_pv.append(item[1])
 
 for item in neg_vec:
     cand_neg_name.append(item[0])
+    tmp_nv.append(item[1])
+
+pos_vec = np.asarray(tmp_pv)
+neg_vec = np.asarray(tmp_nv)
 
 for name in json_names:
     with open(pjoin(data_root, 'flickr', name), 'rb') as f:
@@ -177,13 +200,3 @@ for name in json_names:
             print n_prob
             print idx
             print "-----------"
-        # break
-
-    break
-
-    # step 3
-
-    # step 4
-
-    # with open(pjoin(data_root, 'flickr', nm), 'rb') as f:
-    #     fl_dt = json.load(f)

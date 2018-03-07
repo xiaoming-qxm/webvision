@@ -25,6 +25,43 @@ def find_feat_in_tags(tags, feats):
     return count
 
 
+def sim_tag_and_feat(tags, feats, feat_vecs,
+                     vocab, vec):
+    """ Calculate similarity between tags and features. """
+    sim = find_feat_in_tags(tags, feats)
+
+    if sim == 0.:
+        probs = []
+        # for debugging
+        cand_tags_name = []
+
+        for tag in tags:
+            res = []
+            if vocab.has_key(tag):
+                    # for debugging
+                cand_tags_name.append(tag)
+                tag_vec = vec[vocab[tag]].numpy()
+                for feat in feat_vecs:
+                    res.append(cos_similarity(tag_vec, feat[1]))
+                probs.append(res)
+
+        if not len(probs):
+            sim = 0.
+            return sim
+
+        probs = np.array(probs)
+        # Max pooling along all the tags
+        # probs = np.max(probs, axis=0)
+        max_p = np.max(probs)
+        index = np.where(probs == max_p)
+        # best_tag = cand_tags_name[index[0][0]]
+        # best_feat = cand_feat_name[index[1][0]]
+
+        sim = max_p
+
+    return sim
+
+
 def calc_sim_tag_with_feat(tags, feat_vecs,
                            cand_feat_name,
                            vocab, vec):
@@ -82,6 +119,7 @@ def save2file(clean_set, noisy_set,
 
 
 def filter_via_pan(pos_feat, neg_feat,
+                   pos_vec, neg_vec,
                    vocab, vector,
                    json_names, data_path,
                    save_path, cls_name):
@@ -95,40 +133,33 @@ def filter_via_pan(pos_feat, neg_feat,
             with open(js_file, 'rb') as f:
                 fl_info = json.load(f)
 
-            vague_idx = []
-            # step 1
             for j in xrange(len(fl_info)):
                 info = fl_info[j]
                 idx = info['id']
                 tags = info['tags']
 
-                num_p = find_feat_in_tags(tags, pos_feat)
-                num_n = find_feat_in_tags(tags, neg_feat)
+                sim_p = sim_tag_and_feat(tags, pos_feat,
+                                         pos_vec, vocab, vector)
+                sim_n = sim_tag_and_feat(tags, neg_feat,
+                                         neg_vec, vocab, vector)
 
-                if num_p and num_n:
-                    if num_n < num_p:
+                if sim_p >= 0.5 and sim_n >= 0.5:
+                    if sim_n < sim_p:
                         clean_set.append(idx)
                     else:
                         noisy_set.append(idx)
-                elif num_p > 0:
+                elif sim_p >= 0.5:
                     clean_set.append(idx)
-                elif num_n > 0:
-                    noisy_set.append(idx)
                 else:
-                    vague_idx.append(j)
+                    noisy_set.append(idx)
 
         # write files
         save2file(clean_set, noisy_set,
                   save_path, cls_name, fld)
 
 
-def filter_via_pos(pos_feat, vocab, vector,
-                   json_names, data_path,
-                   save_path, cls_name):
-    pass
-
-
-def filter_via_neg(neg_feat, vocab, vector,
+def filter_via_pos(pos_feat, pos_vec,
+                   vocab, vector,
                    json_names, data_path,
                    save_path, cls_name):
     """ filter data via negative features. """
@@ -144,30 +175,12 @@ def filter_via_neg(neg_feat, vocab, vector,
                 idx = info['id']
                 tags = info['tags']
 
-                num_n = find_feat_in_tags(tags, neg_feat)
-                if num_n:
-                    noisy_set.append(idx)
-                else:
+                sim_p = sim_tag_and_feat(tags, pos_feat,
+                                         pos_vec, vocab, vector)
+                if sim_p >= 0.5:
                     clean_set.append(idx)
 
-            # TODO (step 2)
-        save2file(clean_set, noisy_set,
-                  save_path, cls_name, fld)
-
-
-def filter_nothing(json_names, data_path,
-                   save_path, cls_name):
-    """ filter nothing, keep all as clean. """
-    for fld in ['flickr', 'google']:
-        clean_set = []
-        noisy_set = []
-        for name in json_names:
-            js_file = pjoin(data_path, fld, name + '.json')
-            with open(js_file, 'rb') as f:
-                fl_info = json.load(f)
-            for j in xrange(len(fl_info)):
-                clean_set.append(fl_info[j]['id'])
-
+        # TODO (step 2)
         save2file(clean_set, noisy_set,
                   save_path, cls_name, fld)
 
@@ -184,17 +197,27 @@ def filter(feat_path, fname, vocab,
     pos_feat = set(feats['pos'])
     neg_feat = set(feats['neg'])
 
+    pos_vec = []
+    neg_vec = []
+
+    for ft in feats['pos']:
+        if vocab.has_key(ft):
+            pos_vec.append((ft, vector[vocab[ft]].numpy()))
+
+    for ft in feats['neg']:
+        if vocab.has_key(ft):
+            neg_vec.append((ft, vector[vocab[ft]].numpy()))
+
     if len(pos_feat) and len(neg_feat):
         filter_via_pan(pos_feat, neg_feat,
+                       pos_vec, neg_vec,
                        vocab, vector,
                        json_names, data_path,
                        save_path, cls_name)
-    elif not len(pos_feat) and len(neg_feat):
-        filter_via_neg(neg_feat, vocab, vector,
-                       json_names, data_path,
-                       save_path, cls_name)
     else:
-        filter_nothing(json_names, data_path,
+        filter_via_pos(pos_feat, pos_vec,
+                       vocab, vector,
+                       json_names, data_path,
                        save_path, cls_name)
 
 

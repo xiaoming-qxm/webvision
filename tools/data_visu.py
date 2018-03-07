@@ -55,8 +55,8 @@ def plot_data_stats():
         stats[int(cls_id)] = len(im_list)
     plt.figure(figsize=(10, 6))
     index = range(len(stats))
-    plt.bar(index, stats, 0.8, color='lightblue', edgecolor="lightblue")
-    plt.plot([(i + 0.4) for i in index], stats, 'b-')
+    plt.bar(index, stats, 0.8, color='black', edgecolor="black")
+    # plt.plot([(i + 0.4) for i in index], stats, 'b-')
     # plt.fill_between(index, stats, 0, color='b')
     plt.axis([0, 40, 0, 3000])
     plt.xlabel("Category")
@@ -73,6 +73,6 @@ def plot_train_loss_acc(fname):
 
 
 if __name__ == "__main__":
-    # plot_clean_nosiy_examples()
-    # plot_data_stats()
-    plot_train_loss_acc("../logs/inception_v3_q50_baseline.log")
+    plot_clean_nosiy_examples()
+    plot_data_stats()
+    # plot_train_loss_acc("../logs/inception_v3_q50_baseline.log")

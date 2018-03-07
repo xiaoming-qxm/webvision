@@ -13,3 +13,6 @@ python pred_gt_prob.py --data-path /data/wv-40/train --params-file ${params_file
 
 # get train list
 python sort_prob.py
+
+# create final quantile list
+python crt_final_quantile_list.py

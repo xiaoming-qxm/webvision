@@ -8,7 +8,7 @@ import numpy as np
 import os
 
 
-def sort_by_prob(base_path, save_path, cls_id, aux_thres=0.3, quan=50):
+def sort_by_prob(base_path, save_path, cls_id, aux_thres=0.85, quan=50):
     with open(pjoin(base_path, cls_id + '.lst'), 'rb') as f:
         lines = f.readlines()
 
@@ -41,7 +41,7 @@ def sort_by_prob(base_path, save_path, cls_id, aux_thres=0.3, quan=50):
     return true_set
 
 
-def sort_main(base_path, save_path, quan=50):
+def sort_main(base_path, save_path, quan):
     true_set = []
     for cls_file in os.listdir(base_path):
         print("cls id: {}".format(cls_file))
@@ -54,6 +54,7 @@ def sort_main(base_path, save_path, quan=50):
     with open("../data/train_q{}.lst".format(quan), 'wb') as f:
         for i in range(len(true_set)):
             f.write("{} {}\n".format(true_set[i][0], true_set[i][1]))
+
 
 if __name__ == "__main__":
     base_path = "../data/pred_probs"

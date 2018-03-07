@@ -196,12 +196,14 @@ def tsne_webvision(feature_file):
 
     return Y
 
+
 if __name__ == "__main__":
-    cls_id = 31
+    cls_id = 26
     img_name_file = "../data/img_feat/{}/img_name.lst".format(cls_id)
     feature_file = "../data/img_feat/{}/0.pkl".format(cls_id)
     label_file = "../data/pred_probs/{}.lst".format(cls_id)
-    # label_file = "../data/k-means/{}.lst".format(cls_id)
+    label_file = "../data/k-means/{}.lst".format(cls_id)
+    label_file = "../data/denoised/{}.lst".format(cls_id)
     # label_file = "../data/dens_est/{}.lst".format(cls_id)
 
     with open(img_name_file, 'rb') as f:
@@ -209,11 +211,14 @@ if __name__ == "__main__":
 
     image_list = [l.strip('\n') for l in image_list]
 
-    loc_list = tsne_webvision(feature_file)
+    # loc_list = tsne_webvision(feature_file)
     # Math.save("../data/tsne_2d.npy", loc_list)
 
-    # loc_list = Math.load("../data/tsne_2d.npy")
+    loc_list = Math.load("../data/tsne_2d.npy")
 
     embed_image_plot(loc_list, image_list,
                      label_file=label_file,
                      with_border=True)
+
+    # image_point_plot(loc_list, image_list,
+    #                  label_file=label_file)

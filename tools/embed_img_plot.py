@@ -12,6 +12,38 @@ def add_border(in_image, border, color=None):
     return ImageOps.expand(in_image, border=border, fill=color)
 
 
+def image_point_plot(loc_list, image_list,
+                     label_file=None, figsize=(8, 8)):
+    fig, ax = plt.subplots(figsize=figsize)
+    xmin, xmax = min(loc_list[:, 0]), max(loc_list[:, 0])
+    ymin, ymax = min(loc_list[:, 1]), max(loc_list[:, 1])
+
+    with open(label_file, 'rb') as f:
+        labels = f.readlines()
+    labels = [int(l.strip().split()[-1]) for l in labels]
+
+    markers = ["^", "o", "s", "*", "D"]
+    colors = ['red', 'green', 'blue', "gray"]
+
+    # markers = ["o", "^", "s", "*", "D"]
+    # colors = ['green', 'red', 'blue', "gray"]
+
+    for i in range(len(loc_list)):
+        point = loc_list[i, :]
+        ax.plot(point[0], point[1],
+                marker=markers[labels[i]],
+                markerfacecolor=colors[labels[i]],
+                markeredgecolor=colors[labels[i]],
+                markersize=8)
+
+    ax.set_xlim(1.1 * xmin, 1.1 * xmax)
+    ax.set_ylim(1.1 * ymin, 1.1 * ymax)
+
+    # plt.tight_layout()
+    plt.axis('off')
+    plt.show()
+
+
 def embed_image_plot(loc_list, image_list, label_file=None,
                      size=(64, 64), figsize=(20, 20),
                      with_border=False):
@@ -24,7 +56,7 @@ def embed_image_plot(loc_list, image_list, label_file=None,
             labels = f.readlines()
         labels = [int(l.strip().split()[-1]) for l in labels]
         # green for True, red for False
-        colors = ['red', 'green']
+        colors = ['red', 'green', 'blue', 'yellow', 'purple']
         # border size
         border = 10
 

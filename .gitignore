@@ -16,6 +16,10 @@ data/*.bin
 data/img_feat/*
 data/pred_probs/*
 data/*.lst
+data/*.npy
+data/k-means/*
+data/denoised/*
+data/den_est/*
 
 # swap files
 *.*~

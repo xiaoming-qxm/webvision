@@ -194,7 +194,7 @@ def finetune_model(data_root, gpus, epochs, batch_size,
     if not os.path.exists(res_save_fld):
         os.mkdir(res_save_fld)
 
-    lr_epoch_map = {0: 0.1, 20: 0.01, 60: 0.001}
+    lr_epoch_map = {0: 0.1, 30: 0.01, 80: 0.001, 110: 0.0001}
 
     for epoch in range(epochs):
         adjust_lr_manual(optimizer, epoch, lr_epoch_map)
