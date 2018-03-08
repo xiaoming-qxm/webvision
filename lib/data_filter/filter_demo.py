@@ -52,10 +52,10 @@ def calc_sim_tag_with_feat(tags, feat_mat,
             cand_tags_name.append(tag)
             tag_vec = vec[vocab[tag]].numpy()
             # res = cos_sim(tag_vec, feat_mat)
-            idx, res = hybrid_sim(tag_vec, feat_mat, top_k=3, alpha=0.1)
+            idx, res = hybrid_sim(tag_vec, feat_mat, top_k=50, alpha=0.5)
 
-            print idx
-            print res
+            # print idx
+            # print res
             probs.append(res)
 
     # print cand_tags_name
@@ -168,7 +168,7 @@ for name in json_names:
     # print(vague_idx)
 
     # step 2
-    threshold = 0.5
+    threshold = 0.3
 
     for j in vague_idx:
         info = fl_info[j]

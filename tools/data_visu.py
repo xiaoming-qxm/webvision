@@ -72,7 +72,84 @@ def plot_train_loss_acc(fname):
     plot_history(fname)
 
 
+def plot_training_hist(fname):
+
+    with open(fname, 'rb') as f:
+        infos = f.readlines()
+
+    model_name = infos[0].strip('\n').split(": ")[1]
+    batch_size = infos[1].strip('\n').split(": ")[1]
+    epochs = infos[2].strip('\n').split(": ")[1]
+    best_epoch = infos[3].strip('\n').split(": ")[1]
+    save_name = fname.split('/')[-1].split('.')[0]
+
+    train_loss = []
+    train_acc = []
+    train_steps = []
+
+    ln_i = 5
+    while infos[ln_i].startswith('valid') is False:
+        _, step, loss, acc = infos[ln_i].strip('\n').split(' ')
+        train_loss.append(float(loss))
+        train_acc.append(float(acc))
+        train_steps.append(int(step))
+        ln_i = ln_i + 1
+
+    valid_loss = []
+    valid_acc = []
+    valid_epoch = []
+
+    for i in xrange(ln_i + 1, len(infos)):
+        epoch, loss, acc = infos[i].strip('\n').split(' ')
+        valid_loss.append(float(loss))
+        valid_acc.append(float(acc))
+        valid_epoch.append(int(epoch))
+
+    record_per_epoch = len(train_steps) / max(valid_epoch)
+
+    for i in xrange(len(train_steps)):
+        train_steps[i] = record_per_epoch * train_steps[0] * \
+            (i // record_per_epoch) + train_steps[i]
+
+    valid_epoch = [e * record_per_epoch * train_steps[0] for e in valid_epoch]
+
+    plt.figure(figsize=(14, 5))
+
+    train_steps = [t / 1000 for t in train_steps]
+    valid_epoch = [v / 1000 for v in valid_epoch]
+
+    p1 = plt.subplot(1, 2, 1)
+    p1.plot(train_steps, train_loss, 'r-',
+            label='train loss',
+            lw=1.2)
+    p1.plot(valid_epoch, valid_loss, 'c--',
+            label='valid loss',
+            lw=1.2)
+
+    p1.set_xlabel('training steps (k)')
+    p1.set_ylabel('loss')
+    p1.set_title(model_name + " loss")
+    p1.legend(loc='upper right')
+
+    p2 = plt.subplot(1, 2, 2)
+    p2.plot(train_steps, train_acc, 'r-',
+            label='train acc',
+            lw=1.2)
+    p2.plot(valid_epoch, valid_acc, 'c--',
+            label='valid acc',
+            lw=1.2)
+
+    p2.set_xlabel('training steps (k)')
+    p2.set_ylabel('accuracy')
+    p2.set_title(model_name + " accuracy")
+    p2.legend(loc='upper left')
+
+    plt.savefig('../results/' + model_name +
+                "/{}.png".format(
+                    save_name), bbox_inches='tight')
+
+
 if __name__ == "__main__":
-    plot_clean_nosiy_examples()
-    plot_data_stats()
-    # plot_train_loss_acc("../logs/inception_v3_q50_baseline.log")
+    # plot_clean_nosiy_examples()
+    # plot_data_stats()
+    plot_training_hist("../logs/resnet50.log")

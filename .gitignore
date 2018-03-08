@@ -4,8 +4,8 @@
 logs/*
 
 # results
-results/*
-result/*
+results/inception_v3/*.tar
+result/resnet50/*.tar
 
 # some intermidate file
 data/flickr/*
