@@ -94,19 +94,24 @@ loss: 0.4857
 *model_best_q10_v3.tar*
 
 -----------------------
-### q10_denos finetune on baseline:
-Number of Images: 64364
+### q10_denos finetune on baseline(v1):
+Number of Images: 67781
 
 **In webvision folder**
 
-lr_epoch_map = {0: 0.1, 30: 0.01, 80: 0.001, 110: 0.0001}
-epochs=
+lr_epoch_map = {0: 0.1, 35: 0.01, 80: 0.001, 120: 0.0001}
+epochs=160
 best prec: 
 loss: 
 
 **
 
 -----------------------
+
+-----------------------
+
+
+
 
 ### Q10 from scratch:
 Number of Images: 67880

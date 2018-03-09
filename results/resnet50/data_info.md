@@ -22,8 +22,8 @@ Number of Images: 34596
 lr: 0.1
 dec_freq=40
 epochs=150
-best prec: 
-loss: 
+best prec: 0.7365
+loss: 1.0158
 
 *model_best_baseline.tar*
 
@@ -33,7 +33,7 @@ Number of Images: 34596
 
 **In webvision_b folder**
 
-lr_epoch_map = {0: 001, 50: 0.0001}
+lr_epoch_map = {0: 005, 50: 0.0005}
 epochs=100
 best prec: 
 loss:
@@ -46,7 +46,7 @@ Number of Images: 55757
 
 **In webvision_c folder**
 
-lr_epoch_map = {0: 001, 50: 0.0001}
+lr_epoch_map = {0: 005, 50: 0.0005}
 epochs=100
 best prec: 
 loss:
