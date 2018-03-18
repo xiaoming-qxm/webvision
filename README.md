@@ -20,7 +20,7 @@ Please check out [this site](http://www.vision.ee.ethz.ch/webvision/index.html) 
 ![fig_2](results/cls_spec_acc.png)
 
 ### Precision-Recall Curve
-![fig_3](results/Selection_006.jpg)
+![fig_3](results/pr_01.jpg)
 
 ### Training Curve
 #### Q10_denos
@@ -29,7 +29,7 @@ Please check out [this site](http://www.vision.ee.ethz.ch/webvision/index.html) 
 ### Data Visulization
 
 #### (1) Examples in  Tench
-![fig_5](results/clean_noisy_visu.png =250x)
+![fig_5](results/clean_noisy_visu.png)
 
 #### (2) All images of Bulbul
 ![fig_6](results/tsne_visu_1.jpg)
