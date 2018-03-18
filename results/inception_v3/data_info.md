@@ -101,10 +101,10 @@ Number of Images: 67781
 
 lr_epoch_map = {0: 0.1, 35: 0.01, 80: 0.001, 120: 0.0001}
 epochs=160
-best prec: 
-loss: 
+best prec: 0.8945
+loss: 0.4653
 
-**
+*model_best_q10_denos.tar*
 
 -----------------------
 

@@ -76,7 +76,7 @@ if __name__ == "__main__":
     s2_pos = "big"
     s3_neg = "small"
 
-    # s1_pos = "king"
-    # s2_pos = "woman"
-    # s3_neg = "man"
+    s1_pos = "king"
+    s2_pos = "woman"
+    s3_neg = "man"
     vec_arith(s1_pos, s2_pos, s3_neg)

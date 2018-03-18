@@ -65,7 +65,11 @@ def main():
     # plt.axis([-3, 3, -3, 3])
     # plt.axis('off')
     # plt.show()
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.title('word2vec visulization')
 
     plt.savefig("../results/wv_visu.png")
+
 
 main()

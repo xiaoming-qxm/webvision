@@ -6,6 +6,8 @@ logs/*.log
 # results
 results/inception_v3/*.tar
 results/resnet50/*.tar
+results/per_criteron/*
+results/conf_score/*
 
 # some intermidate file
 data/flickr/*

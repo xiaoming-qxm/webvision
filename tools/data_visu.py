@@ -72,16 +72,15 @@ def plot_train_loss_acc(fname):
     plot_history(fname)
 
 
-def plot_training_hist(fname):
-
-    with open(fname, 'rb') as f:
+def parse_log(log_file):
+    with open(log_file, 'rb') as f:
         infos = f.readlines()
 
     model_name = infos[0].strip('\n').split(": ")[1]
     batch_size = infos[1].strip('\n').split(": ")[1]
     epochs = infos[2].strip('\n').split(": ")[1]
     best_epoch = infos[3].strip('\n').split(": ")[1]
-    save_name = fname.split('/')[-1].split('.')[0]
+    save_name = log_file.split('/')[-1].split('.')[0]
 
     train_loss = []
     train_acc = []
@@ -113,10 +112,77 @@ def plot_training_hist(fname):
 
     valid_epoch = [e * record_per_epoch * train_steps[0] for e in valid_epoch]
 
-    plt.figure(figsize=(14, 5))
-
     train_steps = [t / 1000 for t in train_steps]
     valid_epoch = [v / 1000 for v in valid_epoch]
+
+    return train_steps, train_acc, train_loss, \
+        valid_epoch, valid_acc, valid_loss, \
+        model_name, save_name
+
+
+def plot_pair_training_hist(fname1, fname2, save_name):
+    (train_steps, train_acc_1,
+     train_loss_1, valid_epoch,
+     valid_acc_1, valid_loss_1,
+     model_name_1, _) = parse_log(fname1)
+
+    (train_steps, train_acc_2,
+     train_loss_2, valid_epoch,
+     valid_acc_2, valid_loss_2,
+     model_name_2, _) = parse_log(fname2)
+
+    plt.figure(figsize=(14, 5))
+
+    p1 = plt.subplot(1, 2, 1)
+    p1.plot(train_steps, train_loss_1, 'k-',
+            label='train loss',
+            lw=1.2)
+    p1.plot(valid_epoch, valid_loss_1, 'k--',
+            label='valid loss',
+            lw=1.2)
+
+    p1.plot(train_steps, train_loss_2, 'k-',
+            label='train loss',
+            lw=1.2)
+    p1.plot(valid_epoch, valid_loss_2, 'k--',
+            label='valid loss',
+            lw=1.2)
+
+    p1.set_xlabel('training steps (k)')
+    p1.set_ylabel('loss')
+    p1.set_title(" loss")
+    p1.legend(loc='upper right')
+
+    p2 = plt.subplot(1, 2, 2)
+    p2.plot(train_steps, train_acc_1, 'k-',
+            label='train acc',
+            lw=1.2)
+    p2.plot(valid_epoch, valid_acc_1, 'k--',
+            label='valid acc',
+            lw=1.2)
+
+    p2.plot(train_steps, train_acc_1, 'k-',
+            label='train acc',
+            lw=1.2)
+    p2.plot(valid_epoch, valid_acc_1, 'k--',
+            label='valid acc',
+            lw=1.2)
+
+    p2.set_xlabel('training steps (k)')
+    p2.set_ylabel('accuracy')
+    p2.set_title(" accuracy")
+    p2.legend(loc='upper left')
+    plt.show()
+
+
+def plot_single_training_hist(fname):
+
+    (train_steps, train_acc,
+        train_loss, valid_epoch,
+        valid_acc, valid_loss,
+        model_name, save_name) = parse_log(fname)
+
+    plt.figure(figsize=(14, 5))
 
     p1 = plt.subplot(1, 2, 1)
     p1.plot(train_steps, train_loss, 'r-',
@@ -146,10 +212,13 @@ def plot_training_hist(fname):
 
     plt.savefig('../results/' + model_name +
                 "/{}.png".format(
-                    save_name), bbox_inches='tight')
+                    save_name))
 
 
 if __name__ == "__main__":
     # plot_clean_nosiy_examples()
     # plot_data_stats()
-    plot_training_hist("../logs/resnet50.log")
+    plot_single_training_hist("../logs/inception_v3_q10_v2.log")
+
+    # plot_pair_training_hist("../logs/resnet50_a.log",
+    #                         "../logs/inception_v3_a.log", "test.jpg")
